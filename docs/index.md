@@ -17,3 +17,9 @@ Welcome to the documentation pages for the Jornada Basin LTER Information Manage
 
 4. [The websites]() (Discover)
 
+5. Tools
+
+6. Hacks
+
+    - [Parse trello boards to CSV format](parse_trello_boards.md)
+
