@@ -1,25 +1,44 @@
 # Information Management at Jornada Basin LTER
 
-Welcome to the documentation pages for the Jornada Basin LTER Information Management system. It documents important elements of the [data life cycle](https://www.dataone.org/data-life-cycle) for Jornada research data. **This is a DRAFT document.**
+Welcome to the documentation pages for the Jornada Basin LTER Information Management system. These pages cover important elements of our research process, research data publishing, data management tools, and public-facing information like the website and data catalog.  **This is a DRAFT document.**
 
 #### Table of contents
 
-1. [Study management]() (Plan, Collect, Assure)
+1. Preface: [the JRN LTER Data Management Plan (DRAFT)](JRN_LTER_data_management_plan_draft.md)
+
+2. Research and infrastructure management
     - Research notifications and approval
-    - Dataset documentation
-    - Metadata collection
-    - Dataset submission
+    - Computing and network infrastructure
+    - Data access policies
+    - Metadata and data submission
 
-2. [Data management]() (Assure, Describe, Preserve)
-    - 
+3. Data collection and quality assurance
+    - Archiving data on network shares
+    - GCE and MATLAB extensions
+    - DIMA
+    - Scripted QA/QC
 
-3. [Metadata and the data catalog]() (Describe, Preserve, Discover)
+4. Data packaging and publishing
+    - eml_assemblyline, EML, and customizations
+    - metadata archiving
+    - LTER-core-metabase development (future initiative)
 
-4. [The websites]() (Discover)
+5. The JRN website
+    - Interpretive content (Drupal)
+    - The data catalog
+    - Personnel database (Drupal)
+    - JRN bibliography (Zotero)
 
-5. Tools
+6. Tools and apps
+    - Guide to Jornada-IM repositories
+    - Analytics apps
+    - DSIS
 
-6. Hacks
-
+7. Hacks
     - [Parse trello boards to CSV format](parse_trello_boards.md)
+
+8. External data, partnerships, and collaboration
+    - Collaborations with USDA-ARS data managers
+    - Asombro data
+    - NEON data
 
