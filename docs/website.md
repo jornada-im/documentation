@@ -14,7 +14,7 @@ Each environment has a unique name and web address at {environment}.wpengine.com
 
 ## Secure file management
 
-The hosting provider allows ssh access to any environment using the command
+The hosting provider allows secure shell (ssh) access to any environment using the command
 
     ssh {environment}@{environment}.ssh.wpengine.net
 
@@ -23,5 +23,12 @@ To move a directory of files, such as one of our js apps, from a local machine t
     scp -r GitHub/zotero-biblio {environment}@{environment}.ssh.wpengine.net:/sites/{environment}/
 
 ## Pushing changes to JS apps (data_cat, pub_list)
+
+
+## Removing mixed content (http:// -> https://)
+
+From the hosting provider shell issue:
+
+    wp search-replace 'http://{environment}.wpengine.com' 'https://{environment}.wpengine.com'
 
 
