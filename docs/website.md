@@ -22,13 +22,21 @@ To move a directory of files, such as one of our js apps, from a local machine t
 
     scp -r GitHub/zotero-biblio {environment}@{environment}.ssh.wpengine.net:/sites/{environment}/
 
+## Managing Wordpress from the command line
+
+Once logged in to the shell of the web server environment there are a number of Wordpress command-line utilities that are available. See the description here:
+
+    https://developer.wordpress.org/cli/commands/
+
+### Removing mixed content (http:// -> https://)
+
+For example, to remove mixed comment by replacing "http://" addresses with "https://" issue this command from the shell:
+
+    wp search-replace 'http://{environment}.wpengine.com' 'https://{environment}.wpengine.com'
+
+
 ## Pushing changes to JS apps (data_cat, pub_list)
 
 
-## Removing mixed content (http:// -> https://)
-
-From the hosting provider shell issue:
-
-    wp search-replace 'http://{environment}.wpengine.com' 'https://{environment}.wpengine.com'
 
 
