@@ -4,7 +4,7 @@ Welcome to the documentation pages for the Jornada Basin LTER Information Manage
 
 #### Table of contents
 
-1. Preface: [the JRN LTER Data Management Plan (DRAFT)](JRN_LTER_data_management_plan_draft.md)
+1. Preface: [The JRN LTER Data Management Plan](JRN_LTER_data_management_plan_draft.v3.md)
 
 2. Research and infrastructure management
     - Research notifications and approval
@@ -24,10 +24,11 @@ Welcome to the documentation pages for the Jornada Basin LTER Information Manage
     - LTER-core-metabase development (future initiative)
 
 5. The JRN website
-    - Interpretive content (Drupal)
-    - The data catalog
-    - Personnel database (Drupal)
-    - JRN bibliography (Zotero)
+    - [Overview](website.md)
+    - Interpretive content (Wordpress)
+    - The data catalog app
+    - Personnel database (Wordpress)
+    - JRN bibliography app and Zotero
 
 6. Tools and apps
     - Guide to Jornada-IM repositories

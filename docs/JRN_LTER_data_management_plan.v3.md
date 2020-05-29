@@ -1,6 +1,6 @@
 ﻿# Data Management Plan 
 
-Note that this version was subsequently edited by Steve Archer and Greg Maurer before inclusion in the 2020 JRN LTER-VII proposal (table removed, formatting, rewording). The content and intent remains the same.
+_Note: This version was subsequently edited by Steve Archer and Greg Maurer before inclusion in the 2020 JRN LTER-VII proposal (table removed, formatting, rewording). The content and intent remains the same._
 
 ## Introduction
 
