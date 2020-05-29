@@ -4,7 +4,7 @@ Welcome to the documentation pages for the Jornada Basin LTER Information Manage
 
 #### Table of contents
 
-1. Preface: [The JRN LTER Data Management Plan](JRN_LTER_data_management_plan_draft.v3.md)
+1. Preface: [The JRN LTER Data Management Plan](JRN_LTER_data_management_plan.v3.md)
 
 2. Research and infrastructure management
     - Research notifications and approval
