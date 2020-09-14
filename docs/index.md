@@ -18,27 +18,31 @@ Welcome to the documentation pages for the Jornada Basin LTER Information Manage
     - DIMA
     - Scripted QA/QC
 
-4. Data packaging and publishing
+4. Data packaging and publishing with EML_assemblyline
     - eml_assemblyline, EML, and customizations
     - metadata archiving
-    - LTER-core-metabase development (future initiative)
 
-5. The JRN website
+5. JRN Metabase
+    - [Installation and configuration](jrn_metabase_install_configure.md)
+    - [Populating metadata and adding packages](jrn_metabase_populate.md)
+    - [Making EML](jrn_metabase_makeEML.md)
+
+6. The JRN website
     - [Overview](website.md)
     - Interpretive content (Wordpress)
     - The data catalog app
     - Personnel database (Wordpress)
     - JRN bibliography app and Zotero
 
-6. Tools and apps
+7. Tools and apps
     - Guide to Jornada-IM repositories
     - Analytics apps
     - DSIS
 
-7. Hacks
+8. Hacks
     - [Parse trello boards to CSV format](parse_trello_boards.md)
 
-8. External data, partnerships, and collaboration
+9. External data, partnerships, and collaboration
     - Collaborations with USDA-ARS data managers
     - Asombro data
     - NEON data
