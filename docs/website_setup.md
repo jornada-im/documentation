@@ -1,6 +1,6 @@
-# Maintaining the JRN Website
+# The JRN Website
 
-The JRN website runs on Wordpress and is hosted by WPengine.com. The JRN webmaster, currently the lead Information Manager, has a WPengine.com account that allows access to the website backend for account management, website backups, and other administrative tasks. For content creation, editing, and website design, user accounts are created in the Wordpress environment. 
+The JRN website runs on Wordpress and is hosted by [WPengine](https://wpengine.com). The JRN webmaster, currently the lead Information Manager, has a WPengine.com account that allows access to the website backend for account management, website backups, and other administrative tasks. For content creation, editing, and website design, user accounts are created in the Wordpress environment. 
 
 ## Environments
 

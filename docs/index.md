@@ -25,15 +25,13 @@ Welcome to the documentation pages for the Jornada Basin LTER Information Manage
 5. JRN Metabase
     - [Installation and configuration](jrn_metabase_setup.md)
     - [Server and database administration](jrn_metabase_admin.md)
-    - [Populating metadata and adding packages](jrn_metabase_populate.md)
+    - [Populating metadata and adding datasets](jrn_metabase_populate.md)
     - [Making EML](jrn_metabase_makeEML.md)
 
 6. The JRN website
-    - [Overview](website.md)
-    - Interpretive content (Wordpress)
-    - The data catalog app
-    - Personnel database (Wordpress)
-    - JRN bibliography app and Zotero
+    - [Overview and administration](website_setup.md)
+    - [Content and apps](website_content.md)
+    - [The data catalogs](website_data_catalogs.md)
 
 7. Tools and apps
     - Guide to Jornada-IM repositories
