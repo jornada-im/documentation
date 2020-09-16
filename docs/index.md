@@ -23,7 +23,8 @@ Welcome to the documentation pages for the Jornada Basin LTER Information Manage
     - metadata archiving
 
 5. JRN Metabase
-    - [Installation and configuration](jrn_metabase_install_configure.md)
+    - [Installation and configuration](jrn_metabase_setup.md)
+    - [Server and database administration](jrn_metabase_admin.md)
     - [Populating metadata and adding packages](jrn_metabase_populate.md)
     - [Making EML](jrn_metabase_makeEML.md)
 
