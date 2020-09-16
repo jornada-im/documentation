@@ -27,20 +27,24 @@ First enter the `psql` as the default user (postgres).:
 then create 3 roles, as defined [here](https://github.com/lter/LTER-core-metabase/blob/master/docs/quick_start.md#1-create-users-and-assign-privileges). The commands to issue, which are laid out in the PostgreSQL documentation, chapter 21, are:
 
 1. Alter postgres admin role password:
+
     postgres=# ALTER USER postgres WITH ENCRYPTED PASSWORD '<password>';
 
 2. Alter the authentication config file to allow postgres user to authenticate with md5
+
     sudo vim /etc/postgresql/12/main/pg_hba.conf
 
-    The line should look like:
+The line should look like:
 
         local   all         postgres                          md5
 
 3. Set DB owner (and create password)
+
     postgres=# CREATE ROLE <name> CREATEDB CREATEROLE LOGIN;
     postgres=# ALTER USER <name> WITH ENCRYPTED PASSWORD '<password>';
 
 4. Create the roles you need:
+
     CREATE ROLE read_write_user
     CREATE ROLE read_only_user
     GRANT read_only_user SELECT ON lter_core_metabase
@@ -51,11 +55,15 @@ then create 3 roles, as defined [here](https://github.com/lter/LTER-core-metabas
 
 6.  Add a line to allow remote connections to `pg_hba.conf`. This can allow IPs 0.0.0.0/0 for now using md5(?) for now but probably should be stricter soon.
 
+7. After making changes on server restart the postgres server
+
+    sudo systemctl restart postgresql.service
+
 When you log onto the server there is also a user called postgres. To become that user:
 
     su - postgres
 
-then you can enter the posgres admin shell with `psql`.
+then you can enter the postgres admin shell with `psql`.
 
 ## Testing database
 
