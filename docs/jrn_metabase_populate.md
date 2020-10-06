@@ -51,3 +51,13 @@ Before adding a new DataSet to the JRN Metabase, keep in mind that NOT ALL parts
     - Additional rows with the same `DataSetID` and incremented `EntitySortOrders` (2, 3, 4...) will be used for attributes describing columns in additional dataEntities.
 7. Continue until all table are filled out...
 8. Note that many columns have constraints set - they will need to contain values, and these may be required to come from a parent table.
+
+### Things to remember
+
+* Make sure there are not extra spaces entered in the database. For example, no extra spaces around the "ColumnName" entries in `DataSetAttributes` table.
+* Column attributes with `nominalEnum` measurement scale types are tricky. To make them work:
+    - set the `StorageType` to integer or string, depending what they are
+    - shouldn't  need any `Unit`, `NumberType` or other values.
+* Free text column attributes can have a `nominalText` measurement scale and a string `StorageType`.
+    - shouldn't  need any `Unit`, `NumberType` or other values.
+* Don't know how `ordinalEnum` and `ordinalText` measurement scales work yet. Can't find much documentation about it, though the [EML schema](https://eml.ecoinformatics.org/eml-schema.html#the-eml-attribute-module---attribute-level-information-within-dataset-entities) might define them.
