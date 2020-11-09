@@ -25,6 +25,11 @@ Patches are periodically released and are available on the [migration branch]() 
 
 3. Email the user the new role/user name and password and ask them to change their password using the instructions below.
 
+4. Grant, or revoke, editing roles (list with `\du`) to user roles:
+
+        postgres=# GRANT group_role TO role1, ... ;
+        postgres=# REVOKE group_role FROM role1, ... ;
+
 ### New user tasks
 
 The administrator (site IM for now), will email you a username and password that will allow you to login to the host and the PostgreSQL server. You will need to at least change the PostgreSQL server password for your user account.
