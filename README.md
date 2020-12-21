@@ -1,6 +1,10 @@
 # Jornada LTER IM documentation pages
 
-/docs contains the content
+/docs contains documentation of the IM system
+
+/standards contains data and metadata standards used for publishing JRN data
+
+/reports contains periodic reports from the IM system
 
 not sure yet where these pages will end up.
 
@@ -14,5 +18,10 @@ Please refer to these as you are packaging data and creating EML documents for J
 
 ### Building the standards document
 
-    pandoc JRN_metadata_standards.md --toc --metadata date="$(date +%Y-%m-%d%n)" -o ../JRN_metadata_standards.docx 
+    pandoc JRN_metadata_standards.md --toc --metadata date="$(date +%Y-%m-%d%n)" -o ../JRN_metadata_standards.docx
+
+### Building annual reports
+
+    pandoc JRN_IM_annual_report_2020.md --toc --metadata date="$(date +%Y-%m-%d%n)" -o ../JRN_IM_annual_report_2020.docx
+
 
