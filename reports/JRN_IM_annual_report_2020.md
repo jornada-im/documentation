@@ -1,6 +1,6 @@
 ﻿---
 title: Jornada Basin LTER Information Management 2020 Annual Report (DRAFT)
-date: 20 December 2020
+date: 13 January 2021
 author: Gregory E. Maurer with contributions from the IM Team
 ...
 
