@@ -31,7 +31,7 @@ We added several new elements to the Jornada Basin LTER Information Management s
 * A new [partner data catalog](https://lter.jornada.nmsu.edu/partner-data/) was added to the website.
 * A new [interactive data viewer](https://lter.jornada.nmsu.edu/interactive-data-viewer/) was made available on the website (Geovany), and further additions to this were discussed.
 * An improved [spatial data catalog](https://lter.jornada.nmsu.edu/spatial-data/) was added to the new website, and further improvements were planned.
-* A number of updates to the [Jornada IM website](https://jornada-im.github.com)were completed, including new documentation, improved metadata templates, IM diagnostics, and data access/analysis tools.
+* A number of updates to the [Jornada IM website](https://jornada-im.github.io)were completed, including new documentation, improved metadata templates, IM diagnostics, and data access/analysis tools.
 
 ## Metadata database
 
@@ -53,7 +53,7 @@ We added several new elements to the Jornada Basin LTER Information Management s
 * Greg joined the LTER network's IM Executive committee.
 * Greg joined the LTER-core-metabase and Southwest IM data management/science training working groups.
 * Language clarifying data publishing requirements for Jornada researchers (USDA and LTER) was agreed upon and added to the JER and JRN websites.
-* A new Jornada Spatial Data Release Policy and procedures for providing spatial data to researchers upon request, were agreed upon by LTAR and LTER.
+* A new Jornada Spatial Data Release Policy ([link](https://docs.google.com/forms/d/1GBMhndGT68gQ5uukSxd_wZc7PDNOEzGTkHcupYnulLg)) and procedures for providing spatial data to researchers upon request, were agreed upon by LTAR and LTER.
 * A Jornada IT and data management working group was established (B. Bestelmeyer, S. McCord, D. James, J. Ragosta, G. Maurer) and will begin coordinating upgrades to Jornada IT infrastructure, informatics systems, and data management practices in 2021. Preliminary ideas were presented at the 2020 Jornada Symposium ([see here](https://lter.jornada.nmsu.edu/navigating-the-jornada-data-ecosystem/)).
 * At the 2020 Jornada Desert Ecology Short Course the IM team led or participated in 3 data-focused events -  an introduction to data management, a metadata clinic, and a data jam. Details [available here](https://lter.jornada.nmsu.edu/jornada-desert-ecology-short-course-2020/).
 
@@ -113,9 +113,9 @@ Table 1: Data packaging updates for all, and non-meteorology JRN data packages i
 | Unique package updates |     270 |        47 |
 +------------------------+---------+-----------+
 
-![A plot of JRN’s PASTA+ database activity (knb-lter-jrn scope), including package creation and recurring updates, at the EDI repository in 2020. Top panel: Daily actions for all packages (spikes = meteorological data package creation/updates). Bottom panel: Cumulative actions for all data packages.](/Users/gmaurer/GD_gmaurer.jrn.lter/IM/figures/JRN_EDI_2020_ann_rpt_20210113.png)
+![A plot of JRN’s PASTA+ database activity (knb-lter-jrn scope), including package creation and recurring updates, at the EDI repository in 2020. Top panel: Daily actions for all packages (spikes = meteorological data package creation/updates). Bottom panel: Cumulative actions for all data packages.](/Users/gmaurer/GD_gmaurer.jrn.lter/IM/figures/JRN_EDI_2020_ann_rpt_20210114.png)
 
-![JRN's PASTA+ database activity, as in Fig 1, but excluding the meteorology data packages John and Geovany update. Top panel: Daily actions Bottom panel: Cumulative actions.](/Users/gmaurer/GD_gmaurer.jrn.lter/IM/figures/JRN_EDI_2020_ann_rpt_NoMet_20210113.png)
+![JRN's PASTA+ database activity, as in Fig 1, but excluding the meteorology data packages John and Geovany update. Top panel: Daily actions Bottom panel: Cumulative actions.](/Users/gmaurer/GD_gmaurer.jrn.lter/IM/figures/JRN_EDI_2020_ann_rpt_NoMet_20210114.png)
 
 ![Number of data packages listed under the stages of progress on our \"Core\", \"Non-core\", and \"New\" JRN IM Trello boards.](/Users/gmaurer/GD_gmaurer.jrn.lter/IM/figures/JRN_category_progress20201220.png)
 
