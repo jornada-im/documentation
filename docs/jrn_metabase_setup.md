@@ -1,24 +1,18 @@
 # JRN Metabase - Setup
 
+The jrn_metabase database is a PostgreSQL database. It can be run on a remote server or locally and works with a client/server model. The PostgreSQL server (`postgres`) runs on a host system and manages the databases and all incoming connections from client applications. Database users can use a number of client applications to connect to the server and database(s), either locally (from the server's host machine), or remotely. The standard, commandline client interface to PostgreSQL is `psql`, which can be, or already is, installed on most computers. We also use [DBeaver](https://dbeaver.io/download/) as a graphical client for jrn_metabase. Links to PostgreSQL and community documentation are on the [Postgres Links page](postgres_links.md)
+
 ## Host location and login
 
-The jrn-metabase is hosted on a server called `metadatadb`, which is a virtual server on the DASH server, (Deb's group) for now. To login on ssh you must be on the Jornada VPN, then:
+The jrn-metabase is hosted on a server called `metadatadb`, which is a virtual server on the DASH server, (Deb's group) for now. To login with ssh you must be on the Jornada VPN, then:
 
     ssh <username>@<host name or IP>
 
-## Install and configure PostgreSQL
+## Basic Install and configure PostgreSQL on host server
 
-JRN Metabase is a PostgreSQL version 12 database. Here are the Postgres docs:
+We installed the default packages available in Ubuntu Server. Once installed (in Ubuntu, Debian, or other systems) there is a superuser account for the OS and the database server, which is called `postgres`. This account has no password. There are several configurations to fix while logged into the host to create roles and configure remote access to the `postgres` server. Some of these changes involve editing config files and some involve using the postgres administrative shell, called `psql`.
 
-[https://www.postgresql.org/docs/12/index.html](https://www.postgresql.org/docs/12/index.html)
-
-and here is how it gets installed on Ubuntu (by default):
-
-[https://ubuntu.com/server/docs/databases-postgresql](https://ubuntu.com/server/docs/databases-postgresql)
-
-We just installed the default package available in Ubuntu Server. There are several configurations to fix while logged into the host to create roles and configure remote access to databases. Some of these changes involve editing config files and some involve using the postgres administrative shell, called `psql`.
-
-### Using `psql` - the PostgreSQL administrative shell
+### Using `psql` - the PostgreSQL administrative client shell
 
 Once logged into the PostgreSQL host, the `psql` can be entered (as the postgres user) with:
 
@@ -117,5 +111,30 @@ There are patches created for LTER_core_metabase periodically that may add new f
 
 An example command to install these is:
 
-    psql -U <username> -h <hostname> -d lter_core_metabase < 1_create_schemas_tables.sql
+    psql -U <username> -h <hostname> -d lter_core_metabase < GitHub/LTER-core-metabase/sql/41_consolidate_missing_enumeration_codes.sql
 
+## Backup or move a database
+
+To copy the database to a new host the basic steps are to dump the database to an SQL file using the `pg_dump` utility:
+
+    pg_dump the_db_name > the_backup.sql 
+
+Then copy this file to the new host and restore with:
+
+    psql the_new_dev_db < the_backup.sql
+
+This can feasably all be done in one command:
+
+    pg_dump -C -h remotehost -U remoteuser dbname | psql -h localhost -U localuser dbname
+
+Or the SQL file can be dumped to localhost like this:
+
+    ssh remoteuser@remotehost "pg_dump -U remoteuser dbname -h localhost -C --column-inserts" > ~/Desktop/dbname.bak.sql
+
+See discussion [here](https://stackoverflow.com/questions/1237725/copying-postgresql-database-to-another-server)
+
+Roles are also important - to export roles and restore them in a new cluster use:
+
+    ssh remoteuser@remotehost "pg_dumpall --roles-only -U remoteuser -h localhost" > ~/Desktop/dbname_roles.bak.sql
+
+See here... https://stackoverflow.com/questions/16618627/pg-dump-vs-pg-dumpall-which-one-to-use-to-database-backups
