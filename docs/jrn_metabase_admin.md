@@ -2,11 +2,11 @@
 
 ## Keeping the host and PostgreSQL up to date
 
-The jrn-metabase is hosted on a server called `metadatadb`, which is a virtual server on the DASH server. It runs Ubuntu 20.4. Keep it, and PostgreSQL, up to date with apt.
+The jrn-metabase is usually hosted on a server running Linux or a similar OS. In the case of Ubuntu/Debian systems, keep the OS and PostgreSQL up to date with `apt`.
 
 ## Updating LTER_core_metabase
 
-Patches are periodically released and are available on the [migration branch]() of the GitHub repository. They are pretty easy to install (see [setup](jrn_metabase_setup.md) document) but they might not be needed. 
+Patches are periodically released and are available on the [migration branch]() of the [LTER GitHub repository](https://lter.github.io/LTER-core-metabase/). They are pretty easy to install (see [setup](jrn_metabase_setup.md) document) but they may or may not be needed depending on how our database has evolved. Discuss with the patch creator before installing. 
 
 **Is there a way to export patches if we change things?**
 
@@ -14,7 +14,7 @@ Patches are periodically released and are available on the [migration branch]() 
 
 ### Administrator tasks
 
-1. Log in to the `psql` shell for the PostgreSQL running on the database host server.
+1. Log in to the `psql` shell either from a local terminal (`sudo -u postgres psql`) or from a remote client.
 
         psql -U <role name> -h <host name or IP> -p 5432 <database name>
 
@@ -29,6 +29,8 @@ Patches are periodically released and are available on the [migration branch]() 
 
         postgres=# GRANT group_role TO role1, ... ;
         postgres=# REVOKE group_role FROM role1, ... ;
+
+    In the case of LTER_core_metabase, the important roles are `read_only_user` and `read_write_user`.
 
 ### New user tasks
 
@@ -47,7 +49,49 @@ The administrator (site IM for now), will email you a username and password that
 3. If you also want access to the host server, login with ssh and change your password using `passwd`. You probably don't really need to though.
 
 
-## Backup of the database
+## Backup the database
 
-In `psql` the `pg_dump` command probably does a database dump. Not sure how to configure this yet though.
+To backup the database the basic steps are to dump the database to an SQL file using the `pg_dump` utility:
 
+    pg_dump -F p the_db_name > the_backup.sql 
+
+Some options for `pg_dump` are:
+
+* `-F c|d|t|p` output file format (custom, directory, tar, plain text)
+* `-C` include commands to create database in dump
+* `-O` no owner
+* `-s` schema only
+* `-b` include large objects in the dump
+* `-v` verbose messages
+* `-f` specifies the backup file name
+* `-d` specifies the database to backup
+* `-U` specifies the user to use
+
+Backups using `pg_dump` can also be initiated from DBeaver or pgAdmin. 
+
+A backup can be restored with some variation of:
+
+    psql the_db_name < the_backup.sql
+
+
+## Migrate a database to a new host
+
+To copy the database to a new host the basic steps are to dump the database to an SQL file using the `pg_dump` utility (see above), then copy this file to the new host and restore with:
+
+    psql the_new_dev_db < the_backup.sql
+
+This can feasably all be done in one command:
+
+    pg_dump -C -h remotehost -U remoteuser dbname | psql -h localhost -U localuser dbname
+
+Or the SQL file can be dumped to localhost like this:
+
+    ssh remoteuser@remotehost "pg_dump -U remoteuser dbname -h localhost -C --column-inserts" > ~/Desktop/dbname.bak.sql
+
+See discussion [here](https://stackoverflow.com/questions/1237725/copying-postgresql-database-to-another-server)
+
+Roles are also important - to export roles and restore them in a new cluster use:
+
+    ssh remoteuser@remotehost "pg_dumpall --roles-only -U remoteuser -h localhost" > ~/Desktop/dbname_roles.bak.sql
+
+See here... https://stackoverflow.com/questions/16618627/pg-dump-vs-pg-dumpall-which-one-to-use-to-database-backups

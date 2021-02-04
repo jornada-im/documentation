@@ -1,24 +1,24 @@
 # JRN Metabase - Setup
 
-The jrn_metabase database is a PostgreSQL database. It can be run on a remote server or locally and works with a client/server model. The PostgreSQL server (`postgres`) runs on a host system and manages the databases and all incoming connections from client applications. Database users can use a number of client applications to connect to the server and database(s), either locally (from the server's host machine), or remotely. The standard, commandline client interface to PostgreSQL is `psql`, which can be, or already is, installed on most computers. We also use [DBeaver](https://dbeaver.io/download/) as a graphical client for jrn_metabase. Links to PostgreSQL and community documentation are on the [Postgres Links page](postgres_links.md)
+JRN Metabase (`jrn_metabase`) is a PostgreSQL database that can be stored and accessed on either a local or remote host. Generally we configure it on a remote host for multi-user access. PostgreSQL uses a client/server model, which means that the database server application (`postgres`) runs on the host system and manages the databases and all incoming connections from client applications. Users can choose from a number of client applications to connect to a server and database(s), either locally (from the server's host machine), or remotely. The standard, commandline client interface to PostgreSQL is `psql`, which can be, or already is, installed on most computers. We also use [DBeaver](https://dbeaver.io/download/) as a graphical client for jrn_metabase. Links to PostgreSQL and community documentation are on the [Postgres Links page](postgres_links.md).
 
-## Host location and login
+## Host setup
 
-The jrn-metabase is hosted on a server called `metadatadb`, which is a virtual server on the DASH server, (Deb's group) for now. To login with ssh you must be on the Jornada VPN, then:
+For the remote host, we use an Ubuntu server running an up-to-date PostgreSQL server. To access a remote host over a terminal connection use:
 
     ssh <username>@<host name or IP>
 
-## Basic Install and configure PostgreSQL on host server
+Note that if the host you are accessing is a Jornada server you will need to use the Jornada VPN from outside Wooton Hall.
 
-We installed the default packages available in Ubuntu Server. Once installed (in Ubuntu, Debian, or other systems) there is a superuser account for the OS and the database server, which is called `postgres`. This account has no password. There are several configurations to fix while logged into the host to create roles and configure remote access to the `postgres` server. Some of these changes involve editing config files and some involve using the postgres administrative shell, called `psql`.
+To install PostgreSQL, use the most current installation method for the host's operating system. We installed the default packages available in the latest version of Ubuntu Server. In Linux systems (Ubuntu, Debian, macOS, etc), installation of PostgreSQL creates a system user and a database server role that are both named `postgres`. The PostgreSQL administrative shell client, called `psql', is also installed by default.
 
-### Using `psql` - the PostgreSQL administrative client shell
+### Using the `psql` client
 
-Once logged into the PostgreSQL host, the `psql` can be entered (as the postgres user) with:
+When logged into the PostgreSQL host, any system user with sudoer privileges can switch to the `postgres` user and enter the `psql` shell with:
 
     sudo -u postgres psql
 
-The `postgres=#` prompt will appear indicating you have entered the shell in the `postgres` role, which is the default administrative role with superuser privileges. It has no password set on a new install, so that will need to be set according to instructions below.
+The `postgres=#` prompt will appear indicating you have entered the shell in the `postgres` role, which is the default administrative role with superuser privileges. It has no password set on a new install(, so that will need to be set according to instructions below.)
 
 Other PostgreSQL roles should be created for database users. Once these are created and remote access is configured on the host, `psql` can be run from remote clients (if installed) so that users can login to databases on the host using commands like:
 
@@ -26,48 +26,59 @@ Other PostgreSQL roles should be created for database users. Once these are crea
 
 In general the postgres port is 5432.
 
-### To add roles and configure access:
+### Configuring remote access
 
-There are some recommended changes to configure remote access to a PostgreSQL installation and to create the roles suggested for LTER_core_metabase (defined [here](https://github.com/lter/LTER-core-metabase/blob/master/docs/quick_start.md#1-create-users-and-assign-privileges). This will most likely be done while logged into the host.
+There are several configurations to set to allow remote access to a PostgreSQL database cluster. Some of these changes involve editing config files and some involve using `psql`. Most likely you'll do this from your user account on the host machine.
 
-1. Edit `postgresql.conf` to allow remote connections (`listen_addresses` line, change 'localhost' to '\*')
+1. Edit `postgresql.conf` to allow remote connections. To do this, open the file (usually in `/etc/postgresql/<version>/main`) and locate the `listen_addresses='localhost'` line, uncomment if needed, and change it to:
 
-        sudo vim /etc/postgresql/12/main/postgresql.conf # then make changes
+	listen_addresses='\*'
 
-2. Enter the `psql` as the default user (postgres)
+2. Now give the `postgres` user a password. Enter the `psql` as the default user (postgres)
 
-        sudo -u postgres psql  # assuming logged on to host
+        sudo -u postgres psql  # assuming logged on to host as a sudoer
 
-3. Change the postgres role's password to something more secure    
+    Then change the postgres role's password to something more secure    
 
         postgres=# ALTER USER postgres WITH ENCRYPTED PASSWORD '<password>';
 
 
-4. Alter the PostgreSQL authentication config file to allow postgres user to authenticate with md5
+3. Alter the PostgreSQL authentication config file to allow user `postgres` to authenticate with md5 when making a remote (TCP/IP) connection.
 
         sudo vim /etc/postgresql/12/main/pg_hba.conf
 
-    The line should look like:
+    Add a line that looks like like this:
 
-        local   all         postgres            md5
+        host   all         postgres     0.0.0.0/0       md5
 
-5.  Add a line at the end of `pg_hba.conf` to allow remote connections. This can allow IPs 0.0.0.0/0 for now using md5 for now but ***probably should be stricter soon.*** This looks like:
+    You could also restrict by database, or ip.
+
+4.  For other users, you can add a similar line to `pg_hba.conf` beneath the one above to allow remote connections - just change `postgres` to the user name. This can allow users from any IP (0.0.0.0/0) to login using md5. You could also let all users in this way:
 
         host    all     all      0.0.0.0/0      md5
 
-6. Create a role for the database owner and set password
+    But it isn't that secure.
+
+### PostgreSQL roles for LTER_core_metabase
+
+There are some recommended roles to add to a PostgreSQL cluster for LTER_core_metabase (defined [here](https://github.com/lter/LTER-core-metabase/blob/master/docs/quick_start.md#1-create-users-and-assign-privileges). This will most likely be done in psql while logged into the host.
+
+1. Create a role for the database owner and set password
 
         postgres=# CREATE ROLE <name> CREATEDB CREATEROLE LOGIN;
         postgres=# ALTER USER <name> WITH ENCRYPTED PASSWORD '<password>';
 
-7. Create other roles specified for LTER_core_metabase and give privileges (may need to be done after database is created):
+2. Create other roles specified for LTER_core_metabase. If these exist when creating LTER_core_metabase (see below), they should be granted the correct permissions to the schema and tables.
 
-        CREATE ROLE read_write_user
-        CREATE ROLE read_only_user
-        GRANT read_only_user SELECT ON lter_core_metabase
-        GRANT read_write_user SELECT INSERT UPDATE ON lter_core_metabase
+        CREATE ROLE read_write_user;
+        CREATE ROLE read_only_user;
 
-8. After making changes on server restart the postgres server
+    If they don't have the correct permissions, you might do something like:
+
+        GRANT SELECT ON lter_core_metabase TO read_only_user;
+        GRANT SELECT INSERT UPDATE ON lter_core_metabase TO read_write_user;
+
+3. After making changes on server restart the postgres server
 
         sudo systemctl restart postgresql.service
 
@@ -75,33 +86,33 @@ There are some recommended changes to configure remote access to a PostgreSQL in
 
 ### First a test
 
-There are some PostgreSQL tools available in Linux userspace, so to create a testing database do:
+There are some PostgreSQL tools available in Linux userspace, so to create a testing database for a user do:
 
-    createdb jrn-metabase-test
+    createdb -O <username> <databasename>
 
-Or you can log into `psql` and do:
+Or you can log into `psql` as a particular role and do:
 
-    CREATE DATABASE jrn-metabase-test
+    CREATE DATABASE <databasename>
 
-Then you can log in to the database (from the host):
+Then you can log in to the database (from the host). Note the uppercase -U flag to denote the user:
 
-    psql jrn-metabase-test
+    psql -U <username> <databasename>
 
-and issue SQL commands and queries if you want.
+After logging you can issue SQL commands and queries or use the `psql` commands that are prepended by a backslash (\l, \du, \d...).
 
-### Make lter_core_metabase
+### Create an lter_core_metabase
 
-1. Clone the [lter_core_metabase git repository](https://github.com/lter/LTER-core-metabase)
+1. Clone Jornada's [lter_core_metabase git repository](https://github.com/jornada-im/LTER-core-metabase).
 
-2. Edit the 2 sql files to replace %db_owner% with the name of the database owner
+2. Edit the 2 sql files, '00_create_db.sql' and 'onebigfile.sql', to replace '%db_owner%' with the name of the database owner role you created.
 
-3. Remove the 'TABLESPACE = pg_default' line (don't know why, but works)
+3. Create the database:
 
-4. Create the database:
+        sudo -u postgres psql -f GitHub/LTER-core-metabase/sql/00_create_db.sql
 
-        psql -f GitHub/LTER-core-metabase/sql/00_create_db.sql
+    If there is a locale error, try adding the line `TEMPLATE=template0` or creating a new locale (`locale-gen...`).
 
-5. Set up the schema with `onebigfile.sql` (this is if logged on to host).
+4. Set up the schema with `onebigfile.sql` (this is if logged on to host).
 
         psql -U <db_owner username> -h localhost -d lter_core_metabase < GitHub/LTER-core-metabase/sql/onebigfile.sql
 
@@ -111,30 +122,4 @@ There are patches created for LTER_core_metabase periodically that may add new f
 
 An example command to install these is:
 
-    psql -U <username> -h <hostname> -d lter_core_metabase < GitHub/LTER-core-metabase/sql/41_consolidate_missing_enumeration_codes.sql
-
-## Backup or move a database
-
-To copy the database to a new host the basic steps are to dump the database to an SQL file using the `pg_dump` utility:
-
-    pg_dump the_db_name > the_backup.sql 
-
-Then copy this file to the new host and restore with:
-
-    psql the_new_dev_db < the_backup.sql
-
-This can feasably all be done in one command:
-
-    pg_dump -C -h remotehost -U remoteuser dbname | psql -h localhost -U localuser dbname
-
-Or the SQL file can be dumped to localhost like this:
-
-    ssh remoteuser@remotehost "pg_dump -U remoteuser dbname -h localhost -C --column-inserts" > ~/Desktop/dbname.bak.sql
-
-See discussion [here](https://stackoverflow.com/questions/1237725/copying-postgresql-database-to-another-server)
-
-Roles are also important - to export roles and restore them in a new cluster use:
-
-    ssh remoteuser@remotehost "pg_dumpall --roles-only -U remoteuser -h localhost" > ~/Desktop/dbname_roles.bak.sql
-
-See here... https://stackoverflow.com/questions/16618627/pg-dump-vs-pg-dumpall-which-one-to-use-to-database-backups
+    psql -U <username> -h <hostname> -d <databasename> < GitHub/LTER-core-metabase/sql/41_consolidate_missing_enumeration_codes.sql
