@@ -48,6 +48,11 @@ The administrator (site IM for now), will email you a username and password that
 
 3. If you also want access to the host server, login with ssh and change your password using `passwd`. You probably don't really need to though.
 
+## Copy of the database
+
+To copy a database, including schema and data, use:
+
+    postgres=# CREATE DATABASE <new_database_name> WITH TEMPLATE <template_database_name>;
 
 ## Backup the database
 
