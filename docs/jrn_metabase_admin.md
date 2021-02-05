@@ -2,7 +2,7 @@
 
 ## Keeping the host and PostgreSQL up to date
 
-The jrn-metabase is usually hosted on a server running Linux or a similar OS. In the case of Ubuntu/Debian systems, keep the OS and PostgreSQL up to date with `apt`.
+The JRN Metabase is usually hosted on a server running Linux or a similar OS. In the case of Ubuntu/Debian systems, keep the OS and PostgreSQL up to date with `apt`. Important tasks are listed below. For full documentation of PostgreSQL server administration see the [official PG Administrator Guide](https://www.postgresql.org/docs/current/admin.html)
 
 ## Updating LTER_core_metabase
 
@@ -10,9 +10,16 @@ Patches are periodically released and are available on the [migration branch]() 
 
 **Is there a way to export patches if we change things?**
 
-## New users
+## Metabase gotchas
 
-### Administrator tasks
+* PostgreSQL interprets any keyword (like functions) or identifier (table and column names) to lowercase unless they are double quoted. So, identifiers that are created as case-sensitive using double quotes will always have to be double quoted.
+    - One common convention used when writing SQL is to type SQL keywords in all caps, and identifiers in lowercase with underscores (snake_case).
+    - Currently LTER_core_metabase (and JRN Metabase) violates this - table names and column names are case sensitive and pretty much always need to be double quoted.
+    - See [discussion here](https://stackoverflow.com/questions/2878248/postgresql-naming-conventions).
+
+## Managing roles (database users)
+
+### Administrator tasks to add a role
 
 1. Log in to the `psql` shell either from a local terminal (`sudo -u postgres psql`) or from a remote client.
 
@@ -32,6 +39,8 @@ Patches are periodically released and are available on the [migration branch]() 
 
     In the case of LTER_core_metabase, the important roles are `read_only_user` and `read_write_user`.
 
+5. To configure remote access (TCP/IP) for new users, they will need to be allowed in the `pg_hba.conf` file in some form. See the basics of this in the [setup page](jrn_metabase_setup.md) and PostgreSQL specifics for [the `pg_hba.conf` file](https://www.postgresql.org/docs/current/auth-pg-hba-conf.html).
+
 ### New user tasks
 
 The administrator (site IM for now), will email you a username and password that will allow you to login to the host and the PostgreSQL server. You will need to at least change the PostgreSQL server password for your user account.
@@ -46,13 +55,17 @@ The administrator (site IM for now), will email you a username and password that
 
     where anything in angle brackets needs to be replaced with your username, server, and database information. Don't forget to leave the single quotes around your new password, but you will leave them out when accessing the database.
 
-3. If you also want access to the host server, login with ssh and change your password using `passwd`. You probably don't really need to though.
+### Dropping roles
 
-## Copy of the database
+User roles that no longer need access to a database or cluster should be dropped. The [DROP ROLE](https://www.postgresql.org/docs/current/sql-droprole.html) SQL command will do this, as will the [dropuser](https://www.postgresql.org/docs/current/app-dropuser.html) client application. Often a role will have ownership of database objects, so those ownerships need to be reassigned before dropping. See discussion [here](https://www.postgresql.org/docs/current/role-removal.html).
+
+## Copy the database
 
 To copy a database, including schema and data, use:
 
     postgres=# CREATE DATABASE <new_database_name> WITH TEMPLATE <template_database_name>;
+
+More examples [here](https://www.postgresqltutorial.com/postgresql-copy-database/).
 
 ## Backup the database
 
@@ -78,7 +91,6 @@ A backup can be restored with some variation of:
 
     psql the_db_name < the_backup.sql
 
-
 ## Migrate a database to a new host
 
 To copy the database to a new host the basic steps are to dump the database to an SQL file using the `pg_dump` utility (see above), then copy this file to the new host and restore with:
@@ -99,4 +111,4 @@ Roles are also important - to export roles and restore them in a new cluster use
 
     ssh remoteuser@remotehost "pg_dumpall --roles-only -U remoteuser -h localhost" > ~/Desktop/dbname_roles.bak.sql
 
-See here... https://stackoverflow.com/questions/16618627/pg-dump-vs-pg-dumpall-which-one-to-use-to-database-backups
+See [here?](https://stackoverflow.com/questions/16618627/pg-dump-vs-pg-dumpall-which-one-to-use-to-database-backups)

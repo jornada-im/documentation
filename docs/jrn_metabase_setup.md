@@ -10,7 +10,7 @@ For the remote host, we use an Ubuntu server running an up-to-date PostgreSQL se
 
 Note that if the host you are accessing is a Jornada server you will need to use the Jornada VPN from outside Wooton Hall.
 
-To install PostgreSQL, use the most current installation method for the host's operating system. We installed the default packages available in the latest version of Ubuntu Server. In Linux systems (Ubuntu, Debian, macOS, etc), installation of PostgreSQL creates a system user and a database server role that are both named `postgres`. The PostgreSQL administrative shell client, called `psql', is also installed by default.
+To install PostgreSQL, use the most current installation method for the host's operating system. We installed the default packages available in the latest version of Ubuntu Server. In Linux systems (Ubuntu, Debian, macOS, etc), installation of PostgreSQL creates a system user and a database server role that are both named `postgres`. The PostgreSQL administrative shell client, called `psql', is also installed by default. Many more details on PostgreSQL server administration setup and administration can be found in the [official PG Administrator Guide](https://www.postgresql.org/docs/current/admin.html
 
 ### Using the `psql` client
 
