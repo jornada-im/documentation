@@ -15,7 +15,6 @@ Welcome to the documentation pages for the Jornada Basin LTER Information Manage
 3. Data collection and quality assurance
     - Archiving data on network shares
     - GCE and MATLAB extensions
-    - DIMA
     - Scripted QA/QC
 
 4. Data packaging and publishing with EML_assemblyline
@@ -27,6 +26,7 @@ Welcome to the documentation pages for the Jornada Basin LTER Information Manage
     - [Server and database administration](jrn_metabase_admin.md)
     - [Populating metadata and adding datasets](jrn_metabase_populate.md)
     - [Making EML](jrn_metabase_makeEML.md)
+    - [PostgreSQL help links](postgres_links.md)
 
 6. The JRN website
     - [Overview and administration](website_setup.md)

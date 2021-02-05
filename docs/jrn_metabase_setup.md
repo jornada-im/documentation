@@ -10,7 +10,7 @@ For the remote host, we use an Ubuntu server running an up-to-date PostgreSQL se
 
 Note that if the host you are accessing is a Jornada server you will need to use the Jornada VPN from outside Wooton Hall.
 
-To install PostgreSQL, use the most current installation method for the host's operating system. We installed the default packages available in the latest version of Ubuntu Server. In Linux systems (Ubuntu, Debian, macOS, etc), installation of PostgreSQL creates a system user and a database server role that are both named `postgres`. The PostgreSQL administrative shell client, called `psql', is also installed by default. Many more details on PostgreSQL server administration setup and administration can be found in the [official PG Administrator Guide](https://www.postgresql.org/docs/current/admin.html
+To install PostgreSQL, use the most current installation method for the host's operating system. We installed the default packages available in the latest version of Ubuntu Server. In Linux systems (Ubuntu, Debian, macOS, etc), installation of PostgreSQL creates a system user and a database server role that are both named `postgres`. The PostgreSQL administrative shell client, called `psql', is also installed by default. Many more details on PostgreSQL server administration setup and administration can be found in the [official PG Administrator Guide](https://www.postgresql.org/docs/current/admin.html).
 
 ### Using the `psql` client
 
@@ -61,44 +61,48 @@ There are several configurations to set to allow remote access to a PostgreSQL d
 
 ### PostgreSQL roles for LTER_core_metabase
 
-There are some recommended roles to add to a PostgreSQL cluster for LTER_core_metabase (defined [here](https://github.com/lter/LTER-core-metabase/blob/master/docs/quick_start.md#1-create-users-and-assign-privileges). This will most likely be done in psql while logged into the host.
+There are some recommended roles to add to a PostgreSQL cluster for LTER_core_metabase (defined [here](https://github.com/lter/LTER-core-metabase/blob/master/docs/quick_start.md#1-create-users-and-assign-privileges)). This will most likely be done in psql while logged into the host.
 
 1. Create a role for the database owner and set password
 
         postgres=# CREATE ROLE <name> CREATEDB CREATEROLE LOGIN;
         postgres=# ALTER USER <name> WITH ENCRYPTED PASSWORD '<password>';
 
-2. Create other roles specified for LTER_core_metabase. If these exist when creating LTER_core_metabase (see below), they should be granted the correct permissions to the schema and tables.
+2. Create other roles specified for LTER_core_metabase. If you create these before creating the LTER_core_metabase in the steps below, they will be granted the correct permissions to the schema and tables.
 
         CREATE ROLE read_write_user;
         CREATE ROLE read_only_user;
 
-    If they don't have the correct permissions, you might do something like:
+    If for some reason permissions for these roles need correction, you might do something like:
 
         GRANT SELECT ON lter_core_metabase TO read_only_user;
         GRANT SELECT INSERT UPDATE ON lter_core_metabase TO read_write_user;
 
-3. After making changes on server restart the postgres server
+3. After making changes on server restart the postgres server.
 
         sudo systemctl restart postgresql.service
 
 ## Creating databases
 
-### First a test
+### First some tests
 
-There are some PostgreSQL tools available in Linux userspace, so to create a testing database for a user do:
+There are some PostgreSQL tools available in Linux userspace, so while logged in to the host, you can create a testing database for a user role with:
 
     createdb -O <username> <databasename>
 
 Or you can log into `psql` as a particular role and do:
 
-    CREATE DATABASE <databasename>
+    username=# CREATE DATABASE <databasename>
 
-Then you can log in to the database (from the host). Note the uppercase -U flag to denote the user:
+Once this database is created you can log in to the database from the system shel (Note the uppercase -U flag to denote the user):
 
     psql -U <username> <databasename>
 
-After logging you can issue SQL commands and queries or use the `psql` commands that are prepended by a backslash (\l, \du, \d...).
+Or connect from within psql:
+
+    username=# \c <databasename>
+
+After logging in you can issue SQL commands and queries or use the `psql` metacommands that are prepended by a backslash and [described here](https://www.postgresql.org/docs/current/app-psql.html).
 
 ### Create an lter_core_metabase
 
@@ -110,7 +114,7 @@ After logging you can issue SQL commands and queries or use the `psql` commands 
 
         sudo -u postgres psql -f GitHub/LTER-core-metabase/sql/00_create_db.sql
 
-    If there is a locale error, try adding the line `TEMPLATE=template0` or creating a new locale (`locale-gen...`).
+    If there is a locale error you may edit locales in '00_create_db.sql' to one present on your system (C.UTF8 perhaps), or try adding the line `TEMPLATE=template0` and/or creating a new locale for your system (`locale-gen...`).
 
 4. Set up the schema with `onebigfile.sql` (this is if logged on to host).
 
@@ -118,7 +122,7 @@ After logging you can issue SQL commands and queries or use the `psql` commands 
 
 ### Applying patches
 
-There are patches created for LTER_core_metabase periodically that may add new features or fix bugs between versions. These are in the [migration branch](https://github.com/lter/LTER-core-metabase/tree/migration/sql) of the repository on GitHub. You should only apply the patches that are not already in `onebigfile.sql`, though it can be hard to tell which those are (probably best to ask Gastil et al.).
+There are patches created for LTER_core_metabase periodically that may add new features or fix bugs between versions. These are in the [migration branch](https://github.com/lter/LTER-core-metabase/tree/migration/sql) of the repository on GitHub. You should only apply the patches that are not already in `onebigfile.sql`, though one should probably verify which those are by talking to the LTER_core_metabase team first.
 
 An example command to install these is:
 

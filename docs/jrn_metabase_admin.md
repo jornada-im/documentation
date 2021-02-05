@@ -2,7 +2,7 @@
 
 ## Keeping the host and PostgreSQL up to date
 
-The JRN Metabase is usually hosted on a server running Linux or a similar OS. In the case of Ubuntu/Debian systems, keep the OS and PostgreSQL up to date with `apt`. Important tasks are listed below. For full documentation of PostgreSQL server administration see the [official PG Administrator Guide](https://www.postgresql.org/docs/current/admin.html)
+The JRN Metabase is usually hosted on a server running Linux or a similar OS. In the case of Ubuntu/Debian systems, keep the OS and PostgreSQL up to date with `apt`. Important tasks are listed below. For full documentation of PostgreSQL server administration see the [official PG Administrator Guide](https://www.postgresql.org/docs/current/admin.html).
 
 ## Updating LTER_core_metabase
 
@@ -19,7 +19,7 @@ Patches are periodically released and are available on the [migration branch]() 
 
 ## Managing roles (database users)
 
-### Administrator tasks to add a role
+### Administrator tasks to manage roles
 
 1. Log in to the `psql` shell either from a local terminal (`sudo -u postgres psql`) or from a remote client.
 
@@ -32,7 +32,7 @@ Patches are periodically released and are available on the [migration branch]() 
 
 3. Email the user the new role/user name and password and ask them to change their password using the instructions below.
 
-4. Grant, or revoke, editing roles (list with `\du`) to user roles:
+4. Grant or revoke the desired editing roles (list with `\du`) to user roles:
 
         postgres=# GRANT group_role TO role1, ... ;
         postgres=# REVOKE group_role FROM role1, ... ;

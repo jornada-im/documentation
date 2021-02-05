@@ -15,6 +15,6 @@
 
 * The [4 Hour Learn PostgreSQL Tutorial](https://www.youtube.com/watch?v=qw--VYLpxG4) is excellent.
 * [PostgreSQL Tutorials website](https://www.postgresqltutorial.com/)
-* [GalaxQL](http://sol.gfxile.net/galaxql.html) (general 
+* [GalaxQL](http://sol.gfxile.net/galaxql.html) (not specific to PostgreSQL, but fun) 
 * [4 Hour Learn SQL Tutorial](https://www.youtube.com/watch?v=HXV3zeQKqGY)
 * [PostgreSQL Database Administration for beginners](https://www.youtube.com/watch?v=aUfPf-clLLs)
