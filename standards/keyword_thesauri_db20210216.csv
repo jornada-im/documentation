@@ -1,0 +1,85 @@
+keyword,keywordThesaurus
+core,jrn_dataset
+signature,jrn_dataset
+"Vegetation Dynamics",jrn_dataset
+"Plant, Nitrogen, and Micronutrients",jrn_dataset
+"Plant-Animal Interactions",jrn_dataset
+"Aeolian (Wind Related)",jrn_dataset
+Hydrology,jrn_dataset
+"Climate, Soils, and Atmosphere",jrn_dataset
+Geomorphology,jrn_dataset
+"Land-Atmosphere Interactions",jrn_dataset
+"Management Practices",jrn_dataset
+Imagery,jrn_dataset
+"LTER I",jrn_dataset
+"LTER II",jrn_dataset
+"LTER III",jrn_dataset
+"LTER IV",jrn_dataset
+"LTER V",jrn_dataset
+"LTER VI",jrn_dataset
+"LTER VII",jrn_dataset
+ongoing,jrn_dataset
+long-term,jrn_dataset
+LTAR,jrn_dataset
+USDA,jrn_dataset
+"Systems Ecology Lab",jrn_dataset
+NPP,jornada_projectnames
+NEAT,jornada_projectnames
+Conmod,jornada_projectnames
+Ecotone,jornada_projectnames
+SMES,jornada_projectnames
+Stressor1,jornada_projectnames
+Stressor2,jornada_projectnames
+"Scrape Site",jornada_projectnames
+"Pasture 13 burn",jornada_projectnames
+"Gravelly Ridges",jornada_projectnames
+JORNEX,jornada_projectnames
+"Permanent Quadrats",jornada_projectnames
+BSNE,jornada_projectnames
+"study XXX",jornada_projectnames
+Biodiversity,jornada_projectnames
+GROWES,jornada_projectnames
+"LTER-I Transect",jornada_projectnames
+"Tromble Watershed",jornada_projectnames
+"SEL Bajada",jornada_projectnames
+"Mesquite phenology",jornada_projectnames
+Fluffgrass,jornada_projectnames
+"NPP locations",jornada_placenames
+NEAT,jornada_placenames
+Conmod,jornada_placenames
+SMES,jornada_placenames
+C-CALI,jornada_placenames
+C-GRAV,jornada_placenames
+C-SAND,jornada_placenames
+G-BASN,jornada_placenames
+G-IBPE,jornada_placenames
+G-SUMM,jornada_placenames
+M-NORT,jornada_placenames
+M-RABB,jornada_placenames
+M-WELL,jornada_placenames
+P-COLL,jornada_placenames
+P-SMAL,jornada_placenames
+P-TOBO,jornada_placenames
+T-EAST,jornada_placenames
+T-TAYL,jornada_placenames
+T-WEST,jornada_placenames
+Stressor1,jornada_placenames
+Stressor2,jornada_placenames
+"Scrape Site",jornada_placenames
+"Gravelly Ridges",jornada_placenames
+"JRN Weather Station",jornada_placenames
+"Tromble Watershed",jornada_placenames
+HQ,jornada_placenames
+JER,jornada_placenames
+CDRRC,jornada_placenames
+Aeolian,jornada_placenames
+"Dona Ana",jornada_placenames
+"Pasture 9",jornada_placenames
+"LTER-I Transect",jornada_placenames
+"Pasture 13",jornada_placenames
+"Pasture 12A",jornada_placenames
+"CDRRC Pasture 3",jornada_placenames
+"Pasture 8B",jornada_placenames
+"Natural Revegetation Exclosure",jornada_placenames
+Playas,jornada_placenames
+"SEL Bajada",jornada_placenames

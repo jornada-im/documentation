@@ -6,20 +6,19 @@ Welcome to the documentation pages for the Jornada Basin LTER Information Manage
 
 1. Preface: [The JRN LTER Data Management Plan](JRN_LTER_data_management_plan.v3.md)
 
-2. Research and infrastructure management
+2. Storage, network, and computing infrastructure and administration
+    - Infrastructure overview
+    - [Server administration](server_admin.md)
+
+3. Research approval and data management procedures
     - Research notifications and approval
-    - Computing and network infrastructure
     - Data access policies
     - Metadata and data submission
 
-3. Data collection and quality assurance
+4. Data collection and quality assurance
     - Archiving data on network shares
     - GCE and MATLAB extensions
     - Scripted QA/QC
-
-4. Data packaging and publishing with EML_assemblyline
-    - eml_assemblyline, EML, and customizations
-    - metadata archiving
 
 5. JRN Metabase
     - [Installation and configuration](jrn_metabase_setup.md)
@@ -28,20 +27,25 @@ Welcome to the documentation pages for the Jornada Basin LTER Information Manage
     - [Making EML](jrn_metabase_makeEML.md)
     - [PostgreSQL help links](postgres_links.md)
 
+
 6. The JRN website
     - [Overview and administration](website_setup.md)
     - [Content and apps](website_content.md)
     - [The data catalogs](website_data_catalogs.md)
 
-7. Tools and apps
+7. Data packaging and publishing with EML_assemblyline
+    - eml_assemblyline, EML, and customizations
+    - metadata archiving
+
+8. Tools and apps
     - Guide to Jornada-IM repositories
     - Analytics apps
     - DSIS
 
-8. Hacks
+9. Hacks
     - [Parse trello boards to CSV format](parse_trello_boards.md)
 
-9. External data, partnerships, and collaboration
+10. External data, partnerships, and collaboration
     - Collaborations with USDA-ARS data managers
     - Asombro data
     - NEON data

@@ -1,10 +1,10 @@
 # JRN Metabase - Populating the database
 
-The [LTER-core-metabase documentation](https://lter.github.io/LTER-core-metabase/) on GitHub is the primary source for understanding this process. The steps to [populate](https://lter.github.io/LTER-core-metabase/populate.html) the lter-metabase schema are summarized below, with notes on how this process is being adapted for jrn-metabase.
+The [LTER-core-metabase documentation](https://lter.github.io/LTER-core-metabase/) on GitHub is the primary source for understanding this process. The steps to [populate](https://lter.github.io/LTER-core-metabase/populate.html) the lter-metabase schema are summarized below, with notes on how this process is being adapted for JRN Metabase.
 
 ## Editing tools
 
-In general we are using DBeaver to populate and edit our databases. DBeaver has [excellent documentation](https://dbeaver.com/docs/wiki/), but users will need to install it and set it up with their user/role and password to log into our Metabases. PgAdmin and other tools might be useful someday too.
+In general we are using `psql`, python, or DBeaver to populate and edit our databases. DBeaver has [excellent documentation](https://dbeaver.com/docs/wiki/), but users will need to install it and set it up with their user/role and password to log into JRN Metabases. PgAdmin and other tools might be useful too.
 
 ## Schema overview
 
@@ -29,7 +29,20 @@ There are 4 schemas available in LTER-core-metabase, but the `lter_metabase` sch
 
 ## Populating JRN Metabase with CSV imports
 
-Tables in JRN Metabase can be updated by importing CSV files containing metadata using DBeaver or similar tools. Best to start with parent tables (`DataSets' in particular?) In DBeaver, highlight the table and use the 'Import' tool. The tool should allow you to match columns between CSV and database tables. Setting up incoming CSVs to match the tables in the schema beforehand will help though.
+Tables in JRN Metabase can be updated by importing CSV files containing metadata using `psql`, DBeaver, or python. The relevant SQL command is `COPY FROM`. Setting up incoming CSVs to match the table being copied to will help, and in LTER Metabases it will be best to start with parent tables (`DataSets' in particular?) so that foreign key rules won't be violated.
+
+In server-side `psql` use:
+
+    COPY persons(first_name, last_name, dob, email)
+    FROM '/home/username/sampledb/persons.csv' 
+    DELIMITER ',' 
+    CSV HEADER;  # if there is a header in the csv
+
+In client side `psql` use `\copy`. All the columns in the csv need a destination column in the database table or else an error will result. [This tutorial page](https://www.postgresqltutorial.com/import-csv-file-into-posgresql-table/) helps.
+
+`COPY FROM` operations with CSV files can also be initiated from python using a [`psycopg`](https://www.psycopg.org/) database connection. Some python scripts and modules for this are available in the [jrn_metabase_tools](https://github.com/jornada_im/jrn_metabase_tools) repository.
+
+In DBeaver, highlight the destination table and use the 'Import' tool, then select the CSV file to import. The tool allows you to match columns between CSV and database tables and create/ignore columns if needed. Setting up incoming CSVs to match the tables in the schema beforehand will help. Documentation [here](https://dbeaver.com/docs/wiki/Data-transfer/)
 
 ## Populate with EML
 
@@ -61,3 +74,7 @@ Before adding a new DataSet to the JRN Metabase, keep in mind that NOT ALL parts
 * Free text column attributes can have a `nominalText` measurement scale and a string `StorageType`.
     - shouldn't  need any `Unit`, `NumberType` or other values.
 * Don't know how `ordinalEnum` and `ordinalText` measurement scales work yet. Can't find much documentation about it, though the [EML schema](https://eml.ecoinformatics.org/eml-schema.html#the-eml-attribute-module---attribute-level-information-within-dataset-entities) might define them.
+
+## Tools
+
+[SQL Workbench](https://www.sql-workbench.eu/index.html) can compare database schemas and data (a Java app).
