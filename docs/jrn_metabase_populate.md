@@ -1,6 +1,6 @@
 # JRN Metabase - Populating the database
 
-The [LTER-core-metabase documentation](https://lter.github.io/LTER-core-metabase/) on GitHub is the primary source for understanding this process. The steps to [populate](https://lter.github.io/LTER-core-metabase/populate.html) the lter-metabase schema are summarized below, with notes on how this process is being adapted for JRN Metabase.
+The [LTER-core-metabase documentation](https://lter.github.io/LTER-core-metabase/) on GitHub is the primary source for understanding this process. The steps to populate the lter-metabase schema are summarized below ([and in the docs](https://lter.github.io/LTER-core-metabase/populate.html)), with notes on how this process is being adapted for JRN Metabase.
 
 ## Editing tools
 
@@ -38,11 +38,11 @@ In server-side `psql` use:
     DELIMITER ',' 
     CSV HEADER;  # if there is a header in the csv
 
-In client side `psql` use `\copy`. All the columns in the csv need a destination column in the database table or else an error will result. [This tutorial page](https://www.postgresqltutorial.com/import-csv-file-into-posgresql-table/) helps.
+In client side `psql` use `\copy`, and be aware that not all roles will be permitted to do client-site operations. All the columns in the csv need a destination column in the database table or else an error will result. [This tutorial page](https://www.postgresqltutorial.com/import-csv-file-into-posgresql-table/) helps.
 
 `COPY FROM` operations with CSV files can also be initiated from python using a [`psycopg`](https://www.psycopg.org/) database connection. Some python scripts and modules for this are available in the [jrn_metabase_tools](https://github.com/jornada_im/jrn_metabase_tools) repository.
 
-In DBeaver, highlight the destination table and use the 'Import' tool, then select the CSV file to import. The tool allows you to match columns between CSV and database tables and create/ignore columns if needed. Setting up incoming CSVs to match the tables in the schema beforehand will help. Documentation [here](https://dbeaver.com/docs/wiki/Data-transfer/)
+In DBeaver, highlight the destination table and use the 'Import' tool, then select the CSV file to import. The tool allows you to match columns between CSV and database tables and create/ignore columns if needed. Setting up incoming CSVs to match the tables in the schema beforehand will help. Documentation [here](https://dbeaver.com/docs/wiki/Data-transfer/).
 
 ## Populate with EML
 
@@ -77,4 +77,7 @@ Before adding a new DataSet to the JRN Metabase, keep in mind that NOT ALL parts
 
 ## Tools
 
-[SQL Workbench](https://www.sql-workbench.eu/index.html) can compare database schemas and data (a Java app).
+* [SQL Workbench](https://www.sql-workbench.eu/index.html) can compare database schemas and data (a Java app).
+* [psycopg](https://www.psycopg.org/) is a PostgreSQL database driver for python.
+* [SQL Alchemy](https://www.sqlalchemy.org/) is an ORM and collection of database tools for python (it can use psycopg as a driver).
+* [peewee](http://docs.peewee-orm.com/en/latest/) a lighter-weight ORM.

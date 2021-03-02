@@ -84,12 +84,19 @@ Some options for `pg_dump` are:
 * `-f` specifies the backup file name
 * `-d` specifies the database to backup
 * `-U` specifies the user to use
+* `-h` specifies the host
 
-Backups using `pg_dump` can also be initiated from DBeaver or pgAdmin. 
+So, to create a backup to a client machine, for example, run:
+
+    pg_dump -h <hostname> -U postgres -F p <dbname> > ./path/dbname.bak.sql
+
+Backups using `pg_dump` can also be initiated from DBeaver or pgAdmin but not sure how yet.
 
 A backup can be restored with some variation of:
 
     psql the_db_name < the_backup.sql
+
+Basic info [here](https://www.postgresqltutorial.com/postgresql-backup-database/)
 
 ## Migrate a database to a new host
 
