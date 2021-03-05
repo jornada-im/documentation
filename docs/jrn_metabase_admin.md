@@ -30,6 +30,8 @@ Patches are periodically released and are available on the [migration branch]() 
         postgres=# CREATE ROLE <name> <OTHER OPTIONS> LOGIN;
         postgres=# ALTER USER <name> WITH ENCRYPTED PASSWORD '<password>';
 
+    Note that LOGIN roles are needed to make initial connections to a database, so normal users should have this. CREATE USER grants LOGIN automatically.
+
 3. Email the user the new role/user name and password and ask them to change their password using the instructions below.
 
 4. Grant or revoke the desired editing roles (list with `\du`) to user roles:
@@ -54,6 +56,12 @@ The administrator (site IM for now), will email you a username and password that
         psql -U <username> -h <host name or IP> -p 5432 -c "ALTER USER <username> WITH ENCRYPTED PASSWORD '<new_password>';" <database name>
 
     where anything in angle brackets needs to be replaced with your username, server, and database information. Don't forget to leave the single quotes around your new password, but you will leave them out when accessing the database.
+
+If you don't have `psql` available and can connect to the JRN Metabase server with DBeaver, open an SQL console or SQL script window and type and execute this command:
+
+        ALTER USER <username> WITH ENCRYPTED PASSWORD '<password>';
+
+In either case you will need to change the password in your connection info for future logins.
 
 ### Dropping roles
 

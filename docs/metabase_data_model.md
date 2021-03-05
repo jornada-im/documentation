@@ -34,3 +34,7 @@ Stuff on the internet about this:
 
 * DataSetSites
     - Needs to be populated but not sure what the best way is.
+
+* There doesn't seem to be an easy way to tie geographicdescription to attributes.
+
+* CodeID - we can list all codes used in datafiles in the ListCodes table, then reference in DatasetAttributeEnumeration. But should we?
