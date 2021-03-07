@@ -104,7 +104,9 @@ A backup can be restored with some variation of:
 
     psql the_db_name < the_backup.sql
 
-Basic info [here](https://www.postgresqltutorial.com/postgresql-backup-database/)
+Basic info [here](https://www.postgresqltutorial.com/postgresql-backup-database/).
+
+Regular database backups and backup rotation should be scheduled on the server - probably with `cron`. There are some scripts in the `lter_metabase_utils` repository that are based on [these](https://wiki.postgresql.org/wiki/Automated_Backup_on_Linux).
 
 ## Migrate a database to a new host
 

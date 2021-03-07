@@ -24,6 +24,7 @@ Welcome to the documentation pages for the Jornada Basin LTER Information Manage
     - [Installation and configuration](jrn_metabase_setup.md)
     - [Server and database administration](jrn_metabase_admin.md)
     - [Populating metadata and adding datasets](jrn_metabase_populate.md)
+    - [The JRN Metabase data model](metabase_data_model.md)
     - [Making EML](jrn_metabase_makeEML.md)
     - [PostgreSQL help links](postgres_links.md)
 
