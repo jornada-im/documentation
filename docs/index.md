@@ -51,3 +51,5 @@ Welcome to the documentation pages for the Jornada Basin LTER Information Manage
     - Asombro data
     - NEON data
 
+11. Annual reports
+    - [2021](../reports/JRN_IM_annual_report_2020.md)
