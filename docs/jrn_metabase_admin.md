@@ -108,6 +108,27 @@ Basic info [here](https://www.postgresqltutorial.com/postgresql-backup-database/
 
 Regular database backups and backup rotation should be scheduled on the server - probably with `cron`. There are some scripts in the `lter_metabase_utils` repository that are based on [these](https://wiki.postgresql.org/wiki/Automated_Backup_on_Linux).
 
+## Copy development JRN Metabase to production
+
+There are 2 versions of JRN metabase - a development copy called `jrn_metabase_dev` and the production version (`jrn_metabase`). Periodically, when the development database is well tested and stable, it should be copied to the production version. There are different ways to do this, the easiest of which is probably to delete `jrn_metabase`, create a new, empty database with that name, and then restore it with a nightly backup of `jrn_metabase_dev`.
+
+On the host shell:
+
+    dropdb jrn_metabase
+
+In psql:
+
+    CREATE DATABASE jrn_metabase;
+
+On the host shell:
+
+    psql -U <username> -d jrn_metabase -f /home/backups/postgresql/2021-04-06-daily/jrn_metabase_dev.sql
+
+The nightly backup will need to be unzipped first. It is also possible do it all in psql with something like:
+
+    DROP DATABASE jrn_metabase;
+    CREATE DATABASE jrn_metabase WITH TEMPLATE jrn_metabase_dev;
+
 ## Migrate a database to a new host
 
 To copy the database to a new host the basic steps are to dump the database to an SQL file using the `pg_dump` utility (see above), then copy this file to the new host and restore with:
