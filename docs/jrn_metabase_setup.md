@@ -73,10 +73,7 @@ There are some recommended roles to add to a PostgreSQL cluster for LTER_core_me
         CREATE ROLE read_write_user;
         CREATE ROLE read_only_user;
 
-    If for some reason permissions for these roles need correction, you might do something like:
-
-        GRANT SELECT ON lter_core_metabase TO read_only_user;
-        GRANT SELECT INSERT UPDATE ON lter_core_metabase TO read_write_user;
+    If for some reason permissions for these roles need correction, or a new role needs to be added, you might need to re-run the permission granting section in the database dump for LTER-core-metabase (`onebigfile.sql`), potentially after substituting in the new role name. JRN created a separate user for one of its metabases (jrn_metabase_dev) using this method.
 
 3. After making changes on server restart the postgres server.
 

@@ -17,7 +17,7 @@ _To:_\ \ \ \ Graduate Research Fellowship Program
 \ \ \ \ \ \ \ \ Las Cruces, NM  
 \vspace{2mm}
 
-_Date:_ **12 March 2021**  
+_Date:_ **15 March 2021**  
 
 \vspace{4mm}
 
@@ -40,7 +40,7 @@ The submitted data and metadata items (1 & 2) have been reviewed by the Jornada 
 
 Sincerely,
 
-![](/Users/gmaurer/Dropbox/signatures/signature_small.jpg){ width=170px }
+![](/home/greg/Dropbox/signatures/signature_small.jpg){ width=170px }
 
 Greg Maurer  
 *Information Manager for Jornada Basin LTER*
