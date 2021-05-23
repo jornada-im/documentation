@@ -24,7 +24,7 @@ Additionally, the data entities (CSV tables, geoTIFFs, zip archives, PDFs, etc..
 6. If your data package has tabular data entities (`DataSetEntities.EntityType`="dataTable") open the `DataSetAttributes` table to describe the columns in each tabular data entity.
     - Rows with an `EntitySortOrder` of "1" will describe the column attributes in the first dataEntity included in the dataset.
     - Additional rows with the same `DataSetID` and incremented `EntitySortOrders` (2, 3, 4...) will describe column attributes in additional data entities for the dataset.
-7. If the `DataSetAttributes` table defines any colums as categorical variables by having a `MeasurementScaleDomain of "nominalEnum", you will need look at the categorical data column in the data table and add a record for each categorical variable code used to the `DataSetAttributeEnumeration` table, using codes defined in the `ListCodes` table.
+7. If the `DataSetAttributes` table defines any colums as categorical variables by having a `MeasurementScaleDomain` of "nominalEnum", you will need look at the categorical data column in the data table and add a record for each categorical variable code used to the `DataSetAttributeEnumeration` table, using codes defined in the `ListCodes` table.
 8. Continue until all table are filled out... a sensible order of operations from here (will add more detail later) would be to fill out:
     - `DataSetMethod` with information about the methods file in your dataset directory, usually named "methods.<datasetID>.md" or similar.
     - `DataSetKeywords` with appropriate keywords chosen from the `ListKeywords` table.

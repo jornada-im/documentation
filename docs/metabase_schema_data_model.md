@@ -1,6 +1,27 @@
-# The data model in JRN Metabase
+# JRN Metabase schema and data model
 
 Including some issues.
+
+## Schema overview
+
+There are 4 schemas available in LTER-core-metabase, but the `lter_metabase` schema is the primary collection of tables for describing metadata and data packages. Within this schema there are 3 primary types of tables:
+
+1. `EML`-prefixed tables
+    - For controlled vocabularies (CV) for elements of the EML schema, network level CVs (file types, unit dictionaries)
+    - often populated from network-level sources.
+    - Infrequently updated.
+    - CSV imports or patches might be the best way to populate
+    - For now we are using what was already in LTER_core_metabase and hopefully updates will be community determined to some extent.
+2. `List`-prefixed tables
+    - Controlled vocabularies more specific to the site
+    - We will need to populate with JRN personnel, keyword thesauri, our sites (and bounding boxes), and possibly methods documents and taxa.
+    - Only a subset of the LTER Keyword CV is currently present in the keywords list table.
+    - Somewhat frequently updated
+    - CSV imports or manual entry/updates to populate
+3. `DataSet`-prefixed tables
+    - Metadata assigned to specific datasets in the database
+    - Enter/update records anytime a dataset is added to or updated in JRN Metabase.
+    - Populate with CSV imports, EML using EML2MB (see notes below), or "manually" by entering or updating metadata records for a dataset (see instructions below).
 
 ## Attributes (DataSetAttributes and DataSetAttributeEnumeration tables)
 

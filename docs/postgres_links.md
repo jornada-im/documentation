@@ -18,3 +18,10 @@
 * [GalaxQL](http://sol.gfxile.net/galaxql.html) (not specific to PostgreSQL, but fun) 
 * [4 Hour Learn SQL Tutorial](https://www.youtube.com/watch?v=HXV3zeQKqGY)
 * [PostgreSQL Database Administration for beginners](https://www.youtube.com/watch?v=aUfPf-clLLs)
+
+## Tools
+
+* [SQL Workbench](https://www.sql-workbench.eu/index.html) can compare database schemas and data (a Java app).
+* [psycopg](https://www.psycopg.org/) is a PostgreSQL database driver for python.
+* [SQL Alchemy](https://www.sqlalchemy.org/) is an ORM and collection of database tools for python (it can use psycopg as a driver).
+* [peewee](http://docs.peewee-orm.com/en/latest/) a lighter-weight ORM.

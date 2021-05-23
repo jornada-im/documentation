@@ -1,31 +1,10 @@
 # JRN Metabase - Populating the database
 
-The [LTER-core-metabase documentation](https://lter.github.io/LTER-core-metabase/) on GitHub is the primary source for understanding this process. The steps to populate the lter-metabase schema are summarized below ([and in the docs](https://lter.github.io/LTER-core-metabase/populate.html)), with notes on how this process is being adapted for JRN Metabase.
+The [LTER-core-metabase documentation](https://lter.github.io/LTER-core-metabase/) on GitHub is the primary source for understanding this process. The steps to populate the lter-metabase schema are summarized below ([and in the docs](https://lter.github.io/LTER-core-metabase/populate.html)), with notes on how this process is being adapted for JRN Metabase. Note that before populating, it is worthwhile to learn a little about the LTER Metabase schema and how data are stored within it. See [notes here](metabase_schema_data_model.md) about that.
 
 ## Editing tools
 
 In general we are using `psql`, python, or DBeaver to populate and edit our databases. DBeaver has [excellent documentation](https://dbeaver.com/docs/wiki/), but users will need to install it and set it up with their user/role and password to log into JRN Metabases. PgAdmin and other tools might be useful too.
-
-## Schema overview
-
-There are 4 schemas available in LTER-core-metabase, but the `lter_metabase` schema is the primary collection of tables for describing metadata and data packages. Within this schema there are 3 primary types of tables:
-
-1. `EML`-prefixed tables
-    - For controlled vocabularies (CV) for elements of the EML schema, network level CVs (file types, unit dictionaries)
-    - often populated from network-level sources.
-    - Infrequently updated.
-    - CSV imports or patches might be the best way to populate
-    - For now we are using what was already in LTER_core_metabase and hopefully updates will be community determined to some extent.
-2. `List`-prefixed tables
-    - Controlled vocabularies more specific to the site
-    - We will need to populate with JRN personnel, keyword thesauri, our sites (and bounding boxes), and possibly methods documents and taxa.
-    - Only a subset of the LTER Keyword CV is currently present in the keywords list table.
-    - Somewhat frequently updated
-    - CSV imports or manual entry/updates to populate
-3. `DataSet`-prefixed tables
-    - Metadata assigned to specific datasets in the database
-    - Enter/update records anytime a dataset is added to or updated in JRN Metabase.
-    - Populate with CSV imports, EML using EML2MB (see notes below), or "manually" by entering or updating metadata records for a dataset (see instructions below).
 
 ## Populating JRN Metabase with CSV imports
 
@@ -61,9 +40,6 @@ Before adding a new DataSet to the JRN Metabase, keep in mind that NOT ALL parts
 5. Open the `DataSetEntities` table and enter information for the data entities. If there are more than one you will enter multiple new rows and order them in the ``EntitySortOrder` column. The `DataSetID` and `EntitySortOrder` columns together identify <dataEntities> in other tables, such as for "DataSetAttributes." 
 6. Edit the "DataSetAttributes" table
     - Rows containing a `DataSetID` and `EntitySortOrder` of one will be for describing the attribues in the first dataEntity included in the dataset.
-    - Additional rows with the same `DataSetID` and incremented `EntitySortOrders` (2, 3, 4...) will be used for attributes describing columns in additional dataEntities.
-7. Continue until all table are filled out...
-8. Note that many columns have constraints set - they will need to contain values, and these may be required to come from a parent table.
 
 ### Things to remember
 

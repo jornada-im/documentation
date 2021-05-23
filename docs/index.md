@@ -28,7 +28,7 @@ Welcome to the documentation pages for the Jornada Basin LTER Information Manage
     - [Server and database administration](jrn_metabase_admin.md)
     - [The LTER Metabase schema and data model](metabase_schema_data_model.md)
     - [Populating a new database](jrn_metabase_populate.md)
-    - [Adding and updating datasets](jrn_metabase_create_update_dataset.md)
+    - [Create and update datasets](jrn_metabase_create_update_dataset.md)
     - [PostgreSQL help links](postgres_links.md)
 
 7. Publishing Jornada datasets
@@ -55,4 +55,4 @@ Welcome to the documentation pages for the Jornada Basin LTER Information Manage
     - NEON data
 
 12. Annual reports
-    - [2021](./reports/JRN_IM_annual_report_2020.md)
+    - [2021](reports/JRN_IM_annual_report_2020.md)
