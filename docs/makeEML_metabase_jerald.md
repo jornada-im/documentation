@@ -6,15 +6,15 @@ We are developing a new R package called `jerald` (which relies on `MetaEgress`,
 
 ## Set up the R environment
 
-Install [`MetaEgress`](https://ble-lter.github.io/MetaEgress/).
+Install [MetaEgress](https://ble-lter.github.io/MetaEgress/).
 
-If you want to be adventurous, try installing [`jerald`](https://github.com/jornada-im/jerald).
+If you want to be adventurous, try installing [jerald](https://github.com/jornada-im/jerald).
 
 ## Set up a dataset directory
  
 Jornada datasets consist of data files, metadata, and sometimes additional files. Not all of these can be stored directly in the JRN Metabase. So, each Jornada dataset should have a dedicated directory, usually on the Jornada shared drive. These directories are typically prefixed with the Jornada dataset ID number. As noted below, all data entities to be incuded with the published dataset, as well as some metadata to be attached, will be stored in this directory. It is also a good place to store scripts used to QA/QC datafiles and publish finished datasets.
 
-A template dataset directory for data packages that rely on JRN Metabase can be found in the [`jrn-metabase-utils`](https://github.com/jornada-im/jrn-metabase-utils) repository. It contains all the directories and template scripts described below. This repository also contains a python script (`init_jerald_datasetdir.py`) that will build a dataset directory for you.
+A template dataset directory for data packages that rely on JRN Metabase can be found in the [jrn-metabase-utils](https://github.com/jornada-im/jrn-metabase-utils) repository. It contains all the directories and template scripts described below. This repository also contains a python script (`init_jerald_datasetdir.py`) that will build a dataset directory for you.
 
 ### Metadata sources
 
@@ -40,7 +40,7 @@ Build scripts here prepare the data and metadata for publication using various R
 * `build_210000000_dataset.R` - Basic build script that formats & QA/QCs data in `source_data/` and writes publishable data files to the working directory (`./`)
 * `build_210000000_eml.R` - Creates an eml file and optionally uploads data
 entities and pushes the package to EDI using APIs.
-* `build_210000000_eml_jerald.R` - same as above, but uses the [`jerald`](https://github.com/jornada-im/jerald) R package.
+* `build_210000000_eml_jerald.R` - same as above, but uses the [jerald](https://github.com/jornada-im/jerald) R package.
 
 ## Build EML and publish
 

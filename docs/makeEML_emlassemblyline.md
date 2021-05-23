@@ -4,13 +4,13 @@ The R package [EMLassemblyline](https://ediorg.github.io/EMLassemblyline/) (or `
 
 ## Set up the R environment
 
-Install [`EMLassemblyline`](https://ediorg.github.io/EMLassemblyline/).
+Install [EMLassemblyline](https://ediorg.github.io/EMLassemblyline/).
 
 ## Set up a dataset directory
  
 Jornada datasets consist of data files, metadata, and sometimes additional files, so it is helpful to create dataset directories with a consistent structure to mange these files. Jornada dataset directories are typically prefixed with the Jornada dataset ID number. As noted below, all data entities to be incuded with the published dataset, all metadata for the EML document, and the scripts used to QA/QC datafiles and make EML documents should go in this directory. In the [`EAL` documentation](https://ediorg.github.io/EMLassemblyline/) there is a dataset directory structure suggested, which we have adopted here.
 
-A template dataset directory for data packages that rely on EAL  can be found in the [`jrn-emlassemblyline`](https://github.com/jornada-im/jrn-emlassemblyline) repository. It contains all the directories and template scripts described below. This repository also contains a python script (`init_eal_datasetdir.py`) that will build a dataset directory for you.
+A template dataset directory for data packages that rely on EAL  can be found in the [jrn-emlassemblyline](https://github.com/jornada-im/jrn-emlassemblyline) repository. It contains all the directories and template scripts described below. This repository also contains a python script (`init_eal_datasetdir.py`) that will build a dataset directory for you.
 
 ### Metadata sources
 
