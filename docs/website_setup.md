@@ -18,7 +18,7 @@ The hosting provider allows secure shell (ssh) access to any environment using t
 
     ssh {environment}@{environment}.ssh.wpengine.net
 
-To move a directory of files, such as one of our js apps, from a local machine to the website, use scp. For example, to push the zotero-biblio app to an environment do:
+To move a directory of files, such as one of our js apps, from a local machine to the website, use scp. For example, to push the zotero-biblio app to an environment you might do:
 
     scp -r GitHub/zotero-biblio {environment}@{environment}.ssh.wpengine.net:/sites/{environment}/
 

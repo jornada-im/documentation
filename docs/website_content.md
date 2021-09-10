@@ -38,6 +38,16 @@ The [Interactive Data Viewer](https://jrnstaging.wpengine.com/data-catalog/inter
 
 There are both static and dynamic pages under the "Publications" menu. The [Bibliography page](https://lter.jornada.nmsu.edu/publications/) is showing an app called `zotero-biblio` that reads our bibliography from a database hosted at [Zotero.org](https://zotero.org).  The `zotero-biblio` app is written in javascript and was originally developed by Tim Whiteaker at BLE LTER. Our version of the app, which might be a little different, is hosted and maintained in [a GitHub repository](https://github.com/jornada-im/zotero-biblio). It is running on the Bibliography page through an iframe, but the app lives at [https://lter.jornada.nmsu.edu/zotero-biblio/](https://lter.jornada.nmsu.edu/zotero-biblio/) on the website.
 
+### Maintaining the Zotero app
+
+Once you make changes to the repository you can upload the whole thing to our webhost using scp. The proper command would be:
+
+    scp -prq GitHub/zotero-biblio/* {envname}@{envname}.ssh.wpengine.net:~/sites/{envname}/zotero-biblio/
+
+where {envname} is the environment name at the host (WPengine currently). You'd need to have some ssh keys set up.
+
+### Books
+
 The [Books page](https://lter.jornada.nmsu.edu/jornada-books/) is a post grid populated with Wordpress posts beloging to the 'Books' category. To add new books, create a post and assign to this category.
 
 Other pages under the "Publications" menu are static content.
