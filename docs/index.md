@@ -40,7 +40,7 @@ Welcome to the documentation pages for the Jornada Basin LTER Information Manage
     - [PostgreSQL help links](postgres_links.md)
 
 8. Publishing Jornada datasets
-    - Overview, conventions, and standards
+    - [Overview, conventions, and standards](publish_dataset.md)
     - [Making EML with JRN Metabase](makeEML_metabase_jerald.md)
     - [Making EML with EMLassemblyline](makeEML_emlassemblyline.md)
 
