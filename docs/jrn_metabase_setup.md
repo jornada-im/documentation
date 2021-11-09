@@ -1,6 +1,6 @@
 # JRN Metabase - Setup
 
-JRN Metabase (`jrn_metabase`) is a PostgreSQL database that can be stored and accessed on either a local or remote host. Generally we configure it on a remote host for multi-user access. PostgreSQL uses a client/server model, which means that the database server application (`postgres`) runs on the host system and manages the databases and all incoming connections from client applications. Users can choose from a number of client applications to connect to a server and database(s), either locally (from the server's host machine), or remotely. The standard, commandline client interface to PostgreSQL is `psql`, which can be, or already is, installed on most computers. We also use [DBeaver](https://dbeaver.io/download/) as a graphical client for jrn_metabase. Links to PostgreSQL and community documentation are on the [Postgres Links page](postgres_links.md).
+JRN Metabase (`jrn_metabase`) is a PostgreSQL database that can be stored and accessed on either a local or remote host. Generally we configure it on a remote host for multi-user access. PostgreSQL uses a client/server model, which means that the database server application (`postgres`) runs on the host system and manages the databases and all incoming connections from client applications. Users can choose from a number of client applications to connect to a server and database(s), either locally (from the server's host machine), or remotely. The standard, commandline client interface to PostgreSQL is `psql`, which can be, or already is, installed on most computers. We also use [DBeaver](https://dbeaver.io/download/) as a graphical client for `jrn_metabase`. Links to PostgreSQL and community documentation are on the [Postgres Links page](postgres_links.md).
 
 ## Host setup
 
@@ -81,7 +81,7 @@ There are some recommended roles to add to a PostgreSQL cluster for LTER_core_me
 
 ## Creating databases
 
-### First some tests
+### First some tests of PosgreSQL
 
 There are some PostgreSQL tools available in Linux userspace, so while logged in to the host, you can create a testing database for a user role with:
 
@@ -103,15 +103,17 @@ After logging in you can issue SQL commands and queries or use the `psql` metaco
 
 ### Create an lter_core_metabase
 
-1. Clone Jornada's [lter_core_metabase git repository](https://github.com/jornada-im/LTER-core-metabase).
+At Jornada, we are basically using a "stock" version of LTER-core-metabase. It only takes a few minor modifications to install the source.
 
-2. Edit the 2 sql files, '00_create_db.sql' and 'onebigfile.sql', to replace '%db_owner%' with the name of the database owner role you created.
+1. On the host machine, clone the [lter_core_metabase git repository](https://github.com/lter/LTER-core-metabase) then `cd` into the directory.
+
+2. Edit the 2 sql files, `sql/00_create_db.sql` and `sql/onebigfile.sql`, to replace '%db_owner%' with the name of the database owner role you created. This could be done with a standard text editor or `sed`.
 
 3. Create the database:
 
         sudo -u postgres psql -f GitHub/LTER-core-metabase/sql/00_create_db.sql
 
-    If there is a locale error you may edit locales in '00_create_db.sql' to one present on your system (C.UTF8 perhaps), or try adding the line `TEMPLATE=template0` and/or creating a new locale for your system (`locale-gen...`).
+    If there is a locale error you may edit locales in `00_create_db.sql` to one present on your system (`C.UTF-8` worked best for JRN), and/or create a new locale for your system (`locale-gen...`).
 
 4. Set up the schema with `onebigfile.sql` (this is if logged on to host).
 
@@ -119,7 +121,7 @@ After logging in you can issue SQL commands and queries or use the `psql` metaco
 
 ### Applying patches
 
-There are patches created for LTER_core_metabase periodically that may add new features or fix bugs between versions. These are in the [migration branch](https://github.com/lter/LTER-core-metabase/tree/migration/sql) of the repository on GitHub. You should only apply the patches that are not already in `onebigfile.sql`, though one should probably verify which those are by talking to the LTER_core_metabase team first.
+There are patches created for LTER_core_metabase periodically that may add new features or fix bugs between versions. These are in the [migration branch](https://github.com/lter/LTER-core-metabase/tree/migration/sql) of the repository on GitHub. You should only apply the patches that are not already in `onebigfile.sql`, though one should probably verify which those are by talking to the LTER-core-metabase team first.
 
 An example command to install these is:
 

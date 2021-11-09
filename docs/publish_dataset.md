@@ -10,7 +10,7 @@ The steps to publish a dataset:
 3. Make a *valid* EML file (or other standardized metadata entry)
 4. Publish the dataset to a repository (like EDI)
 
-Step 1 we generally do with R. Step to happens in JRN_metabase. Steps 3 & 4 happen back in R with the `jerald` package.
+Step 1 we generally do with R. Step 2 happens in JRN_metabase. Steps 3 & 4 happen back in R with the `jerald` package.
 
 ## Some useful tools
 
