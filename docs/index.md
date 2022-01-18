@@ -35,7 +35,7 @@ Preface: [The JRN LTER Data Management Plan](JRN_LTER_data_management_plan.v3.md
     - [Installation and configuration](chap-jrn-metabase.md#setup)
     - [Server and database administration](chap-jrn-metabase.md#administration)
     - [The LTER Metabase schema and data model](chap-jrn-metabase.md#metabase-schema-and-data-model)
-    - [Populating a new database](chap-jrn-metabase.md#populating_metabase.md)
+    - [Populating a new database](chap-jrn-metabase.md#populating-metabase)
     - [Create and update datasets](chap-jrn-metabase.md#create-and-update-datasets)
     - [PostgreSQL help links](chap-jrn-metabase.md#postgres-links)
 
@@ -44,11 +44,12 @@ Preface: [The JRN LTER Data Management Plan](JRN_LTER_data_management_plan.v3.md
     - [Making EML with JRN Metabase](makeEML_metabase_jerald.md)
     - [Making EML with EMLassemblyline](makeEML_emlassemblyline.md)
 
-8. Communication systems and websites
-    - [Overview and administration](website_setup.md)
-    - [Shared mail and lists](comm_mail.md)
-    - [Content and apps](website_content.md)
-    - [The data catalogs](website_data_catalogs.md)
+8. The JRN website and other communication platforms
+    - [The JRN Website](chap-website-and-comm.md#the-jrn-website) - an overview
+    - [Website content and apps](chap-website-and-comm.md#website-content-and-apps)
+    - [The data catalogs](chap-website-and-comm.md#data-catalogs)
+    - [Shared mailing lists](chap-website-and-comm.md#mailing-lists)
+
 
 9. Tools and apps
     - Guide to Jornada-IM repositories
