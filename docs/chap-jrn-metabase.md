@@ -1,4 +1,7 @@
-**Title: JRN Metabase**
+---
+title: JRN Metabase
+author: The Jornada Information Management Team
+...
 
 # Setup
 

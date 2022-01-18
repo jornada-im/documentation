@@ -9,7 +9,7 @@ Preface: [The JRN LTER Data Management Plan](JRN_LTER_data_management_plan.v3.md
 Chapters:
 
 1. Research & data management overview
-    - Introduction
+    - [Introduction](chap1-overview.md#introduction)
     - [Research project management](chap1-overview.md#research-project-management)
     - [Research data management](chap1-overview.md#research-data-management)
     - [Public dataset listings](chap1-overview.md#dataset-listings)
@@ -42,9 +42,9 @@ Chapters:
     - [PostgreSQL help links](chap-jrn-metabase.md#postgres-links)
 
 7. Publishing Jornada datasets
-    - [Overview, conventions, and standards](publish_dataset.md)
-    - [Making EML with JRN Metabase](makeEML_metabase_jerald.md)
-    - [Making EML with EMLassemblyline](makeEML_emlassemblyline.md)
+    - [Overview, conventions, and standards](chap-publishing-data.md#introduction)
+    - [Making EML with JRN Metabase](chap-publishing-data.md#make-eml-with-jrn-metabase-and-jerald)
+    - [Making EML with EMLassemblyline](chap-publishing-data.md#make-eml-with-emlassemblyline)
 
 8. The JRN website and other communication platforms
     - [The JRN Website](chap-website-and-comm.md#the-jrn-website) - an overview

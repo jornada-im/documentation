@@ -1,4 +1,7 @@
-**Title: The JRN website and other communication platforms**
+---
+title: Chapter X - The JRN website and other communication platforms
+author: The Jornada Information Management Team
+...
 
 # The JRN Website
 

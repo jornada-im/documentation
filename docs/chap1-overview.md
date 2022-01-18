@@ -1,4 +1,7 @@
-**Chapter 1: Research and data management overview**
+---
+title: Chapter 1 - Research and data management overview
+author: The Jornada Information Management Team
+...
 
 # Introduction
 
