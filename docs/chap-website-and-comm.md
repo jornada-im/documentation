@@ -43,7 +43,7 @@ For example, to remove mixed comment by replacing "http://" addresses with "http
 This is done using scp, generally.
 
 
-# Website content and apps
+# Website content
 
 There is a variety of static and dynamic content on the website an described below. This point of this document is to describe how that content was developed, how it is maintained, and by whom. Important website content areas are listed on the Homepage, or under the main menu items listed below.
 
@@ -71,25 +71,18 @@ Mostly static content - again, usually updated during proposal pushes.
 
 This menu contains 3 data catalogs:
     
-    * The main LTER one
-    * Spatial data (static)
-    * The partner catalog (still in development).
+* The main LTER one
+* Spatial data (static)
+* The partner catalog (still in development).
 
-These are described [on their own page](website_data_catalogs.md). 
+These are described [below](chap-website-and-comm.md#data-catalogs). 
 
 The [Interactive Data Viewer](https://jrnstaging.wpengine.com/data-catalog/interactive-data-viewer/) is also here (and it needs to be documented somewhere...), as is the static species lists (that also need updating...).
 
 ## Publications
 
-There are both static and dynamic pages under the "Publications" menu. The [Bibliography page](https://lter.jornada.nmsu.edu/publications/) is showing an app called `zotero-biblio` that reads our bibliography from a database hosted at [Zotero.org](https://zotero.org).  The `zotero-biblio` app is written in javascript and was originally developed by Tim Whiteaker at BLE LTER. Our version of the app, which might be a little different, is hosted and maintained in [a GitHub repository](https://github.com/jornada-im/zotero-biblio). It is running on the Bibliography page through an iframe, but the app lives at [https://lter.jornada.nmsu.edu/zotero-biblio/](https://lter.jornada.nmsu.edu/zotero-biblio/) on the website.
+There are both static and dynamic pages under the "Publications" menu. The [Bibliography page](https://lter.jornada.nmsu.edu/publications/) is showing an app called `zotero-biblio` that reads our bibliography from a database hosted at [Zotero.org](https://zotero.org).  The `Zotero-JavaScript-Search-Client` app is written in javascript and was originally developed by Tim Whiteaker at BLE LTER. Our fork of this app, which has some customizations, is hosted and maintained in [a GitHub repository](https://github.com/jornada-im/Zotero-JavaScript-Search-Client). It is running on the Bibliography page through an iframe, but the app lives at [https://lter.jornada.nmsu.edu/Zotero-JavaScript-Search-Client/complete_jrn.html](https://lter.jornada.nmsu.edu/Zotero-JavaScript-Search-Client/complete_jrn.html) on the website.
 
-### Maintaining the Zotero app
-
-Once you make changes to the repository you can upload the whole thing to our webhost using scp. The proper command would be:
-
-    scp -prq GitHub/zotero-biblio/* {envname}@{envname}.ssh.wpengine.net:~/sites/{envname}/zotero-biblio/
-
-where {envname} is the environment name at the host (WPengine currently). You'd need to have some ssh keys set up.
 
 ### Books
 
@@ -106,23 +99,37 @@ Mostly static content but the GRFP, Short Course, and REU pages contain post gri
 Static page - should stay fairly in-sync with [this JER page](https://jornada.nmsu.edu/ltar/data/documentation).
 
 
-# Data catalogs
+# Website apps
+
+## Data catalogs
 
 The data catalog seen at [https://lter.jornada.nmsu.edu/data-catalog/]([https://lter.jornada.nmsu.edu/data-catalog/) is JRNs primary data catalog and is a javascript app called `lter-datacat`.
 
-## `lter-datacat`
+### `lter-datacat`
 
 The `lter-datacat` app is written in javascript and was originally developed by Geovany Ramirez and Jason Coombs. It is running on the main data catalog page through an iframe, but the app lives at [https://lter.jornada.nmsu.edu/lter-datacat/](https://lter.jornada.nmsu.edu/lter-datacat/) on the website.
 
 The app is hosted and maintained in [a GitHub repository](https://github.com/jornada-im/lter-datacat)
 
-## Partner data
+### Partner data
 
 This is in development on the staging website. It will list data held at repositories other than EDI.
 
-## Spatial data
+### Spatial data
 
 [The spatial data catalog](https://lter.jornada.nmsu.edu/data-catalog/spatial-data/) is basically just a list of layers that can be downloaded as kmz files. Nothing fancy.
+
+## Zotero bibliography
+
+### Maintaining the Zotero app
+
+Once you make changes to the repository you can upload the whole thing to our webhost using scp. The proper command would be:
+
+    scp -prq GitHub/Zotero-JavaScript-Search-Client/* {envname}@{envname}.ssh.wpengine.net:~/sites/{envname}/Zotero-JavaScript-Search-Client/
+
+where {envname} is the environment name at the host (WPengine currently). You'd need to have some ssh keys set up.
+
+## Interactive data viewer
 
 # Mailing lists
 

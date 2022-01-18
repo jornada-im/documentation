@@ -2,9 +2,11 @@
 
 Welcome to the documentation pages for the Jornada Basin LTER Information Management system. These pages cover important elements of our research process, research data publishing, data management tools, and public-facing information like the website and data catalog.  **This is a DRAFT document.**
 
-#### Table of contents
+### Table of contents
 
 Preface: [The JRN LTER Data Management Plan](JRN_LTER_data_management_plan.v3.md)
+
+Chapters:
 
 1. Research & data management overview
     - Introduction
@@ -46,8 +48,11 @@ Preface: [The JRN LTER Data Management Plan](JRN_LTER_data_management_plan.v3.md
 
 8. The JRN website and other communication platforms
     - [The JRN Website](chap-website-and-comm.md#the-jrn-website) - an overview
-    - [Website content and apps](chap-website-and-comm.md#website-content-and-apps)
-    - [The data catalogs](chap-website-and-comm.md#data-catalogs)
+    - [Website content](chap-website-and-comm.md#website-content)
+    - [Website apps](chap-website-and-comm.md#website-apps)
+      + [The data catalogs](chap-website-and-comm.md#data-catalogs)
+      + [Zotero bibliography](chap-website-and-comm.md#zotero-bibliography)
+      + [Interactive data viewer](chap-website-and-comm.md#interactive-data-viewer)
     - [Shared mailing lists](chap-website-and-comm.md#mailing-lists)
 
 
