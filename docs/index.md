@@ -4,45 +4,51 @@ Welcome to the documentation pages for the Jornada Basin LTER Information Manage
 
 #### Table of contents
 
-1. Preface: [The JRN LTER Data Management Plan](JRN_LTER_data_management_plan.v3.md)
+Preface: [The JRN LTER Data Management Plan](JRN_LTER_data_management_plan.v3.md)
 
-2. Storage, network, and computing infrastructure and administration
-    - Infrastructure overview
-    - [Local servers](local_servers.md)
-    - [Shared cloud services](cloud_shares.md)
-    - [Server & cloud administration](server_admin.md)
-
-3. Communication systems and websites
-    - [Overview and administration](website_setup.md)
-    - [Shared mail and lists](comm_mail.md)
-    - [Content and apps](website_content.md)
-    - [The data catalogs](website_data_catalogs.md)
-
-4. Research approval and data management procedures
+1. Research & data management overview
+    - Introduction
+    - [Research project management](chap1-overview.md#research-project-management)
+    - [Research data management](chap1-overview.md#research-data-management)
+    - [Public dataset listings](chap1-overview.md#dataset-listings)
+    - [Bibliographies](chap1-overview.md#bibliographies)
+    - [Local servers](chap1-overview.md#local-computing-resources)
+    - [Hosted services (external)](chap1-overview.md#hosted-resources)
+    
+2. Policy and procedures
     - Research notifications and approval
     - Data access policies
     - Metadata and data submission
 
-5. Data collection and quality assurance
+3. General systems administration
+    - [Server & cloud administration](server_admin.md)
+
+4. Data collection and quality assurance
     - Archiving data on network shares
     - GCE and MATLAB extensions
     - Scripted QA/QC
 
-6. Metadata collection and standards
+5. Metadata collection and standards
     - [Metadata standards](jornada_metadata_standards.md)
 
-7. JRN Metabase
-    - [Installation and configuration](jrn_metabase_setup.md)
-    - [Server and database administration](jrn_metabase_admin.md)
-    - [The LTER Metabase schema and data model](metabase_schema_data_model.md)
-    - [Populating a new database](jrn_metabase_populate.md)
-    - [Create and update datasets](jrn_metabase_create_update_dataset.md)
-    - [PostgreSQL help links](postgres_links.md)
+6. JRN Metabase
+    - [Installation and configuration](chap-jrn-metabase.md#setup)
+    - [Server and database administration](chap-jrn-metabase.md#administration)
+    - [The LTER Metabase schema and data model](chap-jrn-metabase.md#metabase-schema-and-data-model)
+    - [Populating a new database](chap-jrn-metabase.md#populating_metabase.md)
+    - [Create and update datasets](chap-jrn-metabase.md#create-and-update-datasets)
+    - [PostgreSQL help links](chap-jrn-metabase.md#postgres-links)
 
-8. Publishing Jornada datasets
+7. Publishing Jornada datasets
     - [Overview, conventions, and standards](publish_dataset.md)
     - [Making EML with JRN Metabase](makeEML_metabase_jerald.md)
     - [Making EML with EMLassemblyline](makeEML_emlassemblyline.md)
+
+8. Communication systems and websites
+    - [Overview and administration](website_setup.md)
+    - [Shared mail and lists](comm_mail.md)
+    - [Content and apps](website_content.md)
+    - [The data catalogs](website_data_catalogs.md)
 
 9. Tools and apps
     - Guide to Jornada-IM repositories
@@ -58,4 +64,5 @@ Welcome to the documentation pages for the Jornada Basin LTER Information Manage
     - NEON data
 
 12. Annual reports
-    - [2021](reports/JRN_IM_annual_report_2020.md)
+    - [2020](reports/JRN_IM_annual_report_2020.md)
+    - [2021](reports/JRN_IM_annual_report_2021.md)
