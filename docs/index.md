@@ -46,7 +46,12 @@ Chapters:
     - [Making EML with JRN Metabase](chap-publishing-data.md#make-eml-with-jrn-metabase-and-jerald)
     - [Making EML with EMLassemblyline](chap-publishing-data.md#make-eml-with-emlassemblyline)
 
-8. The JRN website and other communication platforms
+8. Project management
+	1. Project database
+	2. Personnel updates
+	3. Publication updates
+
+9. The JRN website and other communication platforms
     - [The JRN Website](chap-website-and-comm.md#the-jrn-website) - an overview
     - [Website content](chap-website-and-comm.md#website-content)
     - [Website apps](chap-website-and-comm.md#website-apps)

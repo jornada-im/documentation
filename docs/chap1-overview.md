@@ -9,7 +9,7 @@ Put the overarching philosophy and structure here
 
 # Research project management
 
-Projects are approved by John Anderson.
+Research projects at the Jornada are initiated by requesting approval using John Anderson's "Research notification" process. A summary of this process, and links to relevant documents are on the "For researchers" page of the [JRN](https://lter.jornada.nmsu.edu/for-reearchers) and [JER](https) websites.
 
 # Data management
 

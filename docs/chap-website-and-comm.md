@@ -86,6 +86,17 @@ The [Interactive Data Viewer](https://jrnstaging.wpengine.com/data-catalog/inter
 
 There are both static and dynamic pages under the "Publications" menu. The [Bibliography page](https://lter.jornada.nmsu.edu/publications/) is showing an app called `zotero-biblio` that reads our bibliography from a database hosted at [Zotero.org](https://zotero.org).  The `Zotero-JavaScript-Search-Client` app is written in javascript and was originally developed by Tim Whiteaker at BLE LTER. Our fork of this app, which has some customizations, is hosted and maintained in [a GitHub repository](https://github.com/jornada-im/Zotero-JavaScript-Search-Client). It is running on the Bibliography page through an iframe, but the app lives at [https://lter.jornada.nmsu.edu/Zotero-JavaScript-Search-Client/complete_jrn.html](https://lter.jornada.nmsu.edu/Zotero-JavaScript-Search-Client/complete_jrn.html) on the website.
 
+### The Zotero bibliography
+
+#### Tagging
+
+There is a tagging system for tracking the relationship between publications in the bibliography and the Jornada LTER program.
+
+* 'JRN funded' signifies a work that was directly funded by the Jornada LTER grant, with some acknowledgement of that in the text.
+* 'JRN assisted' signifies a work that was supported by the LTER program in some way that is apparent in the text - Jornada LTER data are used, assistance from particular people, or the work is supported by one of our leveraged programs - but direct funding from the JRN LTER is not acknowledged.
+* 'JRN related' signifies a work that is related to the JRN LTER program through location, personnel (investigator coauthor), or research theme, but has no known direct or indirect support from the program. A number of USDA-ARS works on or near the Jornada fall in this category.
+* 'JRN foundational' is used to tag works that were instrumental in the development of the JRN research program, but did not occur as part of the JRN LTER program, usually because they are from before the JRN LTER program was initally funded.
+* 'JRNStatusVerified' is a tag to indicate that someone in the program has checked the publication and verified that one of the tags above is accurately applied.
 
 ### Books
 
@@ -117,6 +128,8 @@ The app is hosted and maintained in [a GitHub repository](https://github.com/jor
 ### Partner data
 
 This is in development on the staging website. It will list data held at repositories other than EDI.
+
+In development, there is an instance of the Zotero-JavaScript-Search-Client tool running at [https://lter.jornada.nmsu.edu/Zotero-JavaScript-Search-Client/complete_jrndata.html](https://lter.jornada.nmsu.edu/Zotero-JavaScript-Search-Client/complete_jrndata.html) that can be i-framed in when ready.
 
 ### Spatial data
 
