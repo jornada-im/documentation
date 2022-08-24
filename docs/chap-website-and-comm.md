@@ -20,13 +20,16 @@ Each environment has a unique name and web address at {environment}.wpengine.com
 
 ## Secure file management
 
-The hosting provider allows secure shell (ssh) access to any environment using the command
+The hosting provider allows secure shell (ssh) access to any environment using an SSH gateway. See setup instructions [here](https://wpengine.com/support/ssh-gateway/). Once set up, issuing the command
 
     ssh {environment}@{environment}.ssh.wpengine.net
 
-To move a directory of files, such as one of our js apps, from a local machine to the website, use scp. For example, to push the zotero-biblio app to an environment you might do:
+should put the user into a terminal session on the web server. To move a directory of files, such as one of our website's client-side apps, from a local machine to the website, use `scp`. For example, to push the zotero-biblio app to an environment you might do:
 
     scp -r GitHub/zotero-biblio {environment}@{environment}.ssh.wpengine.net:/sites/{environment}/
+
+There are occasional issues with the SSH Gateway at our hosting provider, so luckily, management of files with git is also supported. See the [git setup instructions](https://wpengine.com/support/git/) 
+
 
 ## Managing Wordpress from the command line
 
@@ -41,9 +44,9 @@ For example, to remove mixed comment by replacing "http://" addresses with "http
     wp search-replace 'http://{environment}.wpengine.com' 'https://{environment}.wpengine.com'
 
 
-## Pushing changes to JS apps (data_cat, pub_list)
+## Pushing changes to JS apps (lter-datacat, pub_list)
 
-This is done using scp, generally.
+The primary data catalog and the publication lists, including the bibliography and non-EDI data catalog, are client-side apps hosted on our website (`lter-datacat` and `Zotero-JavaScript-Search-Client`, respectively) . Placing these apps there, and updating them, means adding a folder to the website's root directory. This is done using scp, generally (see above), or by pushing changes via git.
 
 
 # Website content
@@ -92,11 +95,11 @@ There are both static and dynamic pages under the "Publications" menu. The [Bibl
 
 There is a tagging system for tracking the relationship between publications in the bibliography and the Jornada LTER program.
 
-* 'JRN funded' signifies a work that was directly funded by the Jornada LTER grant, with some acknowledgement of that in the text.
-* 'JRN assisted' signifies a work that was supported by the LTER program in some way that is apparent in the text - Jornada LTER data are used, assistance from particular people, or the work is supported by one of our leveraged programs - but direct funding from the JRN LTER is not acknowledged.
-* 'JRN related' signifies a work that is related to the JRN LTER program through location, personnel (investigator coauthor), or research theme, but has no known direct or indirect support from the program. A number of USDA-ARS works on or near the Jornada fall in this category.
-* 'JRN foundational' is used to tag works that were instrumental in the development of the JRN research program, but did not occur as part of the JRN LTER program, usually because they are from before the JRN LTER program was initally funded.
-* 'JRNStatusVerified' is a tag to indicate that someone in the program has checked the publication and verified that one of the tags above is accurately applied.
+* `JRN funded` signifies a work that was directly funded by the Jornada LTER grant, with some acknowledgement of that in the text.
+* `JRN assisted` signifies a work that was supported by the LTER program in some way that is apparent in the text - Jornada LTER data are used, assistance from particular people, or the work is supported by one of our leveraged programs - but direct funding from the JRN LTER is not acknowledged.
+* `JRN related` signifies a work that is related to the JRN LTER program through location, personnel (investigator coauthor), or research theme, but has no known direct or indirect support from the program. A number of USDA-ARS works on or near the Jornada fall in this category.
+* `JRN foundational` is used to tag works that were instrumental in the development of the JRN research program, but did not occur as part of the JRN LTER program, usually because they are from before the JRN LTER program was initally funded.
+* `JRNStatusVerified` is a tag to indicate that someone in the program has checked the publication and verified that one of the tags above is accurately applied.
 
 ### Books
 
@@ -146,6 +149,7 @@ Once you make changes to the repository you can upload the whole thing to our we
 where {envname} is the environment name at the host (WPengine currently). You'd need to have some ssh keys set up.
 
 ## Interactive data viewer
+
 
 # Mailing lists
 

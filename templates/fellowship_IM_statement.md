@@ -17,7 +17,7 @@ _To:_\ \ \ \ Graduate Research Fellowship Program
 \ \ \ \ \ \ \ \ Las Cruces, NM  
 \vspace{2mm}
 
-_Date:_ **15 March 2021**  
+_Date:_ **21 February 2022**  
 
 \vspace{4mm}
 
@@ -25,7 +25,7 @@ To whom it may concern,
 
 \vspace{2mm}
 
-The student ***Arthur Tansley*** has, within the last year, completed the data and metadata submission requirements for funding by the Jornada Basin LTER Graduate Research Fellowship Program ("the fellowship"). These requirements include:
+The student ***Arthur Tansley*** has, within the last year, completed the data and metadata submission requirements for funding by the Jornada Graduate Research Fellowship Program ("the fellowship"). These requirements include:
 
 1. Submission of one or more files containing data collected as part of a graduate research project associated with their degree program and the fellowship.
 

@@ -41,7 +41,7 @@ Some server tasks, like database or website backups, should be scheduled with cr
 
 ## NFS and CIFS mounts to remote directories
 
-The JORNADA-NETB1 storage block (sometimes called the R drive) allows CIFS connections (or SMB). Here is one method for 
+The JORNADA-NETB1 storage block (sometimes called the R drive) allows CIFS connections (or SMB).
 
 Other:
 

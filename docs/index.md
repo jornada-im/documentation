@@ -1,6 +1,6 @@
 # Information Management at Jornada Basin LTER
 
-Welcome to the documentation pages for the Jornada Basin LTER Information Management system. These pages cover important elements of our research process, research data publishing, data management tools, and public-facing information like the website and data catalog.  **This is a DRAFT document.**
+This is the full documentation for the Jornada Basin LTER Information Management system, covering technical aspects of our data publishing process, data management tools, and administration of public-facing information like the website and data catalog. Researchers and data users should start at the [Jornada IM web pages](https://jornada-im.github.io/) to get started with Jornada data management.  **This is a DRAFT document.**
 
 ### Table of contents
 
@@ -44,6 +44,7 @@ Chapters:
 7. Publishing Jornada datasets
     - [Overview, conventions, and standards](chap-publishing-data.md#introduction)
     - [Making EML with JRN Metabase](chap-publishing-data.md#make-eml-with-jrn-metabase-and-jerald)
+        + SOP for entering metadata in Metabase: [docx](SOP_Metadata_Publishing.docx), [web page](sop_metadata_publishing) (draft)
     - [Making EML with EMLassemblyline](chap-publishing-data.md#make-eml-with-emlassemblyline)
 
 8. Project management
