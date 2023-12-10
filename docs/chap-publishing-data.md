@@ -54,7 +54,7 @@ the `source_data/` directory.
 
 ### Other entities
 
-Other entities should probably be kept in the top level of the dataset directory, but me may find a better way.
+Other entities should probably be kept in the top level of the dataset directory, but we may find a better way.
 
 ### Build scripts
 
