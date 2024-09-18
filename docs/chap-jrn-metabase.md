@@ -33,7 +33,7 @@ In general the postgres port is 5432.
 
 ### Configuring remote access
 
-There are several configurations to set to allow remote access to a PostgreSQL database cluster. Some of these changes involve editing config files and some involve using `psql`. Most likely you'll do this from your user account on the host machine.
+There are several configurations to set to allow remote access to a PostgreSQL database cluster. Some of these changes involve editing config files and some involve using `psql`. Most likely you'll do this from your user account on the host machine. Check [these instructions](https://ubuntu.com/server/docs/install-and-configure-postgresql) for updates.
 
 1. Edit `postgresql.conf` to allow remote connections. To do this, open the file (usually in `/etc/postgresql/<version>/main`) and locate the `listen_addresses='localhost'` line, uncomment if needed, and change it to:
 
@@ -54,7 +54,7 @@ There are several configurations to set to allow remote access to a PostgreSQL d
 
     Add a line that looks like like this:
 
-        host   all         postgres     0.0.0.0/0       md5
+        hostssl   template1         postgres     0.0.0.0/0       scram-sha-256
 
     You could also restrict by database, or ip.
 
@@ -75,8 +75,8 @@ There are some recommended roles to add to a PostgreSQL cluster for LTER_core_me
 
 2. Create other roles specified for LTER_core_metabase. If you create these before creating the LTER_core_metabase in the steps below, they will be granted the correct permissions to the schema and tables.
 
-        CREATE ROLE read_write_user;
-        CREATE ROLE read_only_user;
+        CREATE ROLE read_write_metabase;
+        CREATE ROLE read_only_metabase;
 
     If for some reason permissions for these roles need correction, or a new role needs to be added, you might need to re-run the permission granting section in the database dump for LTER-core-metabase (`onebigfile.sql`), potentially after substituting in the new role name. JRN created a separate user for one of its metabases (jrn_metabase_dev) using this method.
 
@@ -86,7 +86,7 @@ There are some recommended roles to add to a PostgreSQL cluster for LTER_core_me
 
 ## Creating databases
 
-### First some tests of PosgreSQL
+### First some tests of PostgreSQL
 
 There are some PostgreSQL tools available in Linux userspace, so while logged in to the host, you can create a testing database for a user role with:
 
@@ -126,11 +126,29 @@ At Jornada, we are basically using a "stock" version of LTER-core-metabase. It o
 
 ### Applying patches
 
-There are patches created for LTER_core_metabase periodically that may add new features or fix bugs between versions. These are in the [migration branch](https://github.com/lter/LTER-core-metabase/tree/migration/sql) of the repository on GitHub. You should only apply the patches that are not already in `onebigfile.sql`, though one should probably verify which those are by talking to the LTER-core-metabase team first.
+There are patches created for LTER_core_metabase periodically that may add new features or fix bugs between versions. These are in the [migration branch](https://github.com/lter/LTER-core-metabase/tree/migration/sql) of the `LTER-core-metabase` GitHub repository. You should only apply the patches that are not already in `onebigfile.sql` and have not been already installed to your metabase. Check which patches are installed by consulting the `pkg_mgmt.version_tracker_metabase` table.
 
-An example command to install these is:
+Some logical steps to install a patch are:
 
-    psql -U <username> -h <hostname> -d <databasename> < GitHub/LTER-core-metabase/sql/41_consolidate_missing_enumeration_codes.sql
+  1. Log on to the server running `jrn_metabase`
+  2. Pull any changes from `LTER-core-metabase` repository.
+  3. Make a copy of the patches for local editing:
+
+         cp sql/44_add_provider_id_taxonomy_vw.sql sql_jrn/44_add_provider_id_taxonomy_vw.jrn.sql
+
+  4. Edit the patch to make it compatibile with your metabase configuration. In most cases (assuming the patch is well-tessted) this should easy, and the main task is usually to replace `%db_owner%` with the appropriate Postgres role for the installed metabase.
+
+         vim sql_jrn/33_semantic_annotation.jrn.sql
+
+  5. Run the patch SQL by logging to the target database as `postgres` (or another authorized user; `sudo -u postgres psql jrn_metabase`) and issuing:
+  
+         \i GitHub/LTER-core-metabase/sql_jrn/33_semantic_annotation.jrn.sql
+
+      using `psql` from the system prompt may work, though there may be permission problems with this:
+
+         psql -U <username> -h <hostname> -d <databasename> < GitHub/LTER-core-metabase/sql_jrn/33_semantic_annotation.sql
+    
+  6. Check that the patch was applied correctly!
 
 # Administration
 
@@ -173,7 +191,7 @@ Patches are periodically released and are available on the [migration branch]() 
         postgres=# GRANT group_role TO role1, ... ;
         postgres=# REVOKE group_role FROM role1, ... ;
 
-    In the case of LTER_core_metabase, the important roles are `read_only_user` and `read_write_user`.
+    In the case of LTER_core_metabase, the important roles are `read_only_metabase` and `read_write_metabase`.
 
 5. To configure remote access (TCP/IP) for new users, they will need to be allowed in the `pg_hba.conf` file in some form. See the basics of this in the [setup page](jrn_metabase_setup.md) and PostgreSQL specifics for [the `pg_hba.conf` file](https://www.postgresql.org/docs/current/auth-pg-hba-conf.html).
 
@@ -191,11 +209,11 @@ The administrator (site IM for now), will email you a username and password that
 
     where anything in angle brackets needs to be replaced with your username, server, and database information. Don't forget to leave the single quotes around your new password, but you will leave them out when accessing the database.
 
-If you don't have `psql` available and can connect to the JRN Metabase server with DBeaver, open an SQL console or SQL script window and type and execute this command:
+If you don't have `psql` available and can connect to `jrn_metabase` server with DBeaver, you may instead open an SQL console or SQL script window and type and execute this command:
 
         ALTER USER <username> WITH ENCRYPTED PASSWORD '<password>';
 
-In either case you will need to change the password in your connection info for future logins.
+In either case you will need to change the password in your locally-stored connection info (e.g. for DBeaver and R) for future logins.
 
 ### Dropping roles
 
@@ -285,6 +303,12 @@ Roles are also important - to export roles and restore them in a new cluster use
 
 See [here?](https://stackoverflow.com/questions/16618627/pg-dump-vs-pg-dumpall-which-one-to-use-to-database-backups)
 
+Restoring seems to be easiest with a command like:
+
+    pg_restore -C -h localhost -d jstream-data -U postgres /home/backups/postgresql/2024-09-17-daily/jstream-data.custom
+
+TODO: Flesh this out - how we do backups, how to restore them, especially during a potential server upgrade or other change?
+
 # Metabase schema and data model
 
 Including some issues.
@@ -367,7 +391,7 @@ In server-side `psql` use:
     DELIMITER ',' 
     CSV HEADER;  # if there is a header in the csv
 
-In client side `psql` use `\copy`, and be aware that not all roles will be permitted to do client-site operations. All the columns in the csv need a destination column in the database table or else an error will result. [This tutorial page](https://www.postgresqltutorial.com/import-csv-file-into-posgresql-table/) helps.
+In client side `psql` use `\copy`, and be aware that not all roles will be permitted to do client-site operations. All the columns in the csv need a destination column in the database table or else an error will result. [This tutorial page](https://www.postgresqltutorial.com/import-csv-file-into-postgresql-table/) helps.
 
 `COPY FROM` operations with CSV files can also be initiated from python using a [`psycopg`](https://www.psycopg.org/) database connection. Some python scripts and modules for this are available in the [jrn_metabase_tools](https://github.com/jornada_im/jrn_metabase_tools) repository.
 

@@ -19,9 +19,15 @@ Creating new services at DO is easy - it can be done with the dashboard or an AP
 
 4. Install software, which varies depending on server purpose.
 
-    * All: git, cron
-    * Database hosts: PostgreSQL
+    * Metabase server: git, cron, PostgreSQL
     * Web servers: probably the LAMP stack and WordPress, maybe some javascript.
+
+### Metabase server config
+
+1. Clone the [`LTER-core-metabase`](https://github.com/lter/LTER-core-metabase) and [`jrn-db-utils`](https://github.com/jornada-im/jrn-db-utils) (private) repositories to a directory in home.
+2. Create a `backups` directory and `mkdir /home/backups/postgresql`. Make sure owner is whoever operates backups for postgres
+3. Add a the `jrn-db-utils/sh/pb_backup_rotated.sh` script to crontab - nightly.
+4. Make sure incoming connections for SSH (TCP port 22) and PostgreSQL (TCP port 5432) are allowed in the firewall (currently using the DO firewall).
  
 
 ## Securing cloud servers
