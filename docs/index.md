@@ -1,5 +1,7 @@
 # Information Management at Jornada Basin LTER
 
+**WARNING** This site is deprecated! Visit <https://jornada-im.github.io> to find the documentation.
+
 This is the full documentation for the Jornada Basin LTER Information Management system, covering technical aspects of our data publishing process, data management tools, and administration of public-facing information like the website and data catalog. Researchers and data users should start at the [Jornada IM web pages](https://jornada-im.github.io/) to get started with Jornada data management.  **This is a DRAFT document.**
 
 ### Table of contents
