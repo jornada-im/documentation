@@ -1,5 +1,7 @@
 # Jornada LTER IM documentation pages
 
+**WARNING** - This site is deprecated! Please visit <https://jornada-im.github.io> to find this documentation
+
 /docs contains documentation of the IM system
 
 /standards contains data and metadata standards used for publishing JRN data
